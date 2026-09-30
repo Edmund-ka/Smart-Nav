@@ -1,31 +1,8 @@
-//
-//  sensor.swift
-//  Smart_nav
-//
-//  Created by Edmund Afunyah on 9/16/26.
-//
 /*Foundation
-↓
 basic Swift functionality
-
-CoreMotion
-↓
-accelerometer
-gyroscope
-magnetometer
-device motion
-barometer
-
-CoreLocation
-↓
-GPS
-location
-speed
-direction
-
-UIKit
-↓
-proximity sensor
+CoreMotion: accelerometer, gyroscope ,magnetometer, device motion, barometer
+CoreLocation: GPS, location, speed, direction
+UIKit: proximity sensor
 */
 
 
@@ -36,7 +13,6 @@ import CoreLocation  // Apple's framework for GPS and location tracking
 import UIKit         // Apple's UI framework (used here to access device hardware like the proximity sensor)
 import Combine       // Allows us to use @Published to broadcast data changes to the UI
 
-// 'class' is our blueprint.
 // NSObject: Base class required to act as a GPS delegate.
 // ObservableObject: Protocol allowing SwiftUI to watch this class for updates.
 // CLLocationManagerDelegate: Protocol (contract) promising we have the methods to handle GPS data.
@@ -57,7 +33,7 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var accelerometerZ: Double = 0
 
 
-    // Gyroscope (Rate of rotation around the phone's axes)
+    // Gyroscope (rotation around the phone's axes)
     @Published var gyroscopeX: Double = 0
     @Published var gyroscopeY: Double = 0
     @Published var gyroscopeZ: Double = 0
@@ -86,7 +62,6 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var relativeAltitude: Double = 0
 
 
-    // Proximity (Is the phone held up to an ear/face?)
     @Published var objectIsNear: Bool = false
 
 
@@ -133,7 +108,6 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 
     // MARK: - Gyroscope
-    // (Follows the exact same pattern as the Accelerometer)
     func startGyroscope() {
         guard motionManager.isGyroAvailable else {
             print("Gyroscope is not available")
@@ -157,7 +131,6 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 
     // MARK: - Magnetometer
-    // (Follows the exact same pattern as the Accelerometer)
     func startMagnetometer() {
         guard motionManager.isMagnetometerAvailable else {
             print("Magnetometer is not available")
@@ -181,7 +154,6 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 
     // MARK: - Device Motion
-    // (Follows the exact same pattern as the Accelerometer)
     func startDeviceMotion() {
         guard motionManager.isDeviceMotionAvailable else {
             print("Device Motion is not available")
@@ -284,8 +256,6 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
 
-    // MARK: - Convenience Methods
-    // Helper function to turn everything on at once
     func startAllSensors() {
         startAccelerometer()
         startGyroscope()
@@ -296,7 +266,6 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         startProximitySensor()
     }
 
-    // Helper function to cleanly shut down all hardware to save battery
     func stopAllSensors() {
         stopAccelerometer()
         stopGyroscope()
