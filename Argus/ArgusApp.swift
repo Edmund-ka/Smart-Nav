@@ -1,6 +1,6 @@
 //
-//  Smart_navApp.swift
-//  Smart_nav
+//  ArgusApp.swift
+//  Argus
 //
 //  Created by Edmund Afunyah on 9/16/26.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Smart_navApp: App {
+struct ArgusApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Smart_nav
+//  Argus
 //
 //  Created by Edmund Afunyah on 9/16/26.
 //
@@ -14,12 +14,12 @@ struct ContentView: View {
         TabView {
 
             HomeView()
-                .tabItem {
+               .tabItem {
 
-                    Image(systemName: "house")
+                   Image(systemName: "map")
 
-                    Text("Home")
-                }
+                   Text("Home")
+               }
 
 
             SensorView()
