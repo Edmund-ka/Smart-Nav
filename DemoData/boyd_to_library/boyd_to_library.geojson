@@ -1,0 +1,84 @@
+{
+  "type": "FeatureCollection",
+  "name": "Boyd Hall to TSU library",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "start",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8275056,
+          36.1654389
+        ]
+      },
+      "properties": {
+        "name": "Boyd Hall starting point",
+        "source": "start-pin.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "destination",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8283694,
+          36.1658583
+        ]
+      },
+      "properties": {
+        "name": "Library stopping point",
+        "source": "library-pin.png"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "route",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8275056,
+            36.1654389
+          ],
+          [
+            -86.8277845,
+            36.1653988
+          ],
+          [
+            -86.8279208,
+            36.165297
+          ],
+          [
+            -86.8284426,
+            36.165159
+          ],
+          [
+            -86.8286284,
+            36.1653023
+          ],
+          [
+            -86.8287103,
+            36.1657161
+          ],
+          [
+            -86.8286849,
+            36.1658161
+          ],
+          [
+            -86.8283694,
+            36.1658583
+          ]
+        ]
+      },
+      "properties": {
+        "source": "route-overhead.png",
+        "geometry_method": "Approximate screenshot trace aligned to two placemarks. Intermediate vertices estimated; accessibility unverified.",
+        "source_measurement_m": 201.49,
+        "alternate_view": "route-oblique.png",
+        "alternate_view_measurement_m": 219.15
+      }
+    }
+  ]
+}

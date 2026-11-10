@@ -235,23 +235,41 @@ class SensorManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 
     // MARK: - Proximity Sensor
-    func startProximitySensor() {
-        // Turns on the physical infrared sensor by the front camera
-        UIDevice.current.isProximityMonitoringEnabled = true
 
-        // Listens for a system-wide broadcast that the proximity state has changed
+    func startProximitySensor() {
+
+        let device = UIDevice.current
+
+        // Ask iOS to enable the proximity sensor
+        device.isProximityMonitoringEnabled = true
+
+        // Check whether iOS actually enabled it
+        print("Proximity monitoring enabled:",
+              device.isProximityMonitoringEnabled)
+
+        // Get the sensor's CURRENT state immediately
+        objectIsNear = device.proximityState
+
+        print("Initial proximity state:",
+              device.proximityState)
+
+        // Listen for future changes
         NotificationCenter.default.addObserver(
             forName: UIDevice.proximityStateDidChangeNotification,
-            object: nil,
-            queue: .main // Ensures the UI update happens on the Main Thread
-        ) { [weak self] notification in
-            // Updates our boolean variable to true/false
-            self?.objectIsNear = UIDevice.current.proximityState
+            object: device,
+            queue: .main
+        ) { [weak self] _ in
+
+            let isNear = UIDevice.current.proximityState
+
+            print("PROXIMITY CHANGED:", isNear)
+
+            self?.objectIsNear = isNear
         }
     }
 
     func stopProximitySensor() {
-        // Turns off the physical sensor
+
         UIDevice.current.isProximityMonitoringEnabled = false
     }
 

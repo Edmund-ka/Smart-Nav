@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0AD00000000000000000002 = {isa = PBXBuildFile; fileRef = B0AD00000000000000000001; };
 		0522FFC7306DD49100317139 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 0522FFC6306DD49100317139 /* MapLibre */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B0AD00000000000000000001 = {isa = PBXFileReference; lastKnownFileType = text.json; path = DemoData/boyd_to_library/boyd_to_library.geojson; sourceTree = "<group>"; };
 		05BD5E70305B69BB0097672F /* Argus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Argus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -37,6 +39,7 @@
 		05BD5E67305B69BB0097672F = {
 			isa = PBXGroup;
 			children = (
+		B0AD00000000000000000001,
 				05BD5E72305B69BB0097672F /* Argus */,
 				05BD5E71305B69BB0097672F /* Products */,
 			);
@@ -118,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+		B0AD00000000000000000002,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
