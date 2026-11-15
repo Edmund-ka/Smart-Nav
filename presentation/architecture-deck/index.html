@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Argus · Smart-Edge Accessible Campus Navigation</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+  <div class="aurora"><i></i><i></i><i></i></div>
+  <div class="grain"></div>
+
+  <!-- 1 · TITLE -->
+  <section class="slide s-title" data-accent="#0284c7" data-accent2="#fe5c8d" data-section="Introduction"
+    data-notes="Introduce the team and the project in one breath: Argus is an accessible campus navigation system for blind and low-vision pedestrians at TSU. Today we focus on how the system is designed: the architecture and each subsystem.">
+    <div>
+      <div class="uni rv" style="--i:0">Tennessee State University · COMP 4500 Senior Project I</div>
+      <div class="brand rv" style="--i:1">Argus<span>.</span></div>
+      <div class="tag rv" style="--i:2">Smart-Edge Accessible <span class="grad">Campus Navigation</span></div>
+      <div class="sub rv" style="--i:3">Spoken, hands-free guidance for blind and low-vision<br>pedestrians, built on iPhone, Meta smart glasses and campus map data.</div>
+      <div class="team rv" style="--i:4">
+        <div><b>Edmund Afunyah</b><small>Team member</small></div>
+        <div><b>Sydney Apenteng</b><small>Team member</small></div>
+        <div><b>Dr. Ali Sekmen</b><small>Course Instructor · Technical Advisor</small></div>
+      </div>
+    </div>
+    <div class="hero rv fade" style="--i:2">
+      <svg viewBox="0 0 820 820" aria-hidden="true">
+        <defs>
+          <linearGradient id="rg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0284c7"/><stop offset=".5" stop-color="#4f46e5"/><stop offset="1" stop-color="#fe5c8d"/></linearGradient>
+          <radialGradient id="glow"><stop offset="0" stop-color="#0284c7" stop-opacity=".16"/><stop offset="1" stop-color="#0284c7" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="410" cy="410" r="380" fill="url(#glow)"/>
+        <g fill="rgba(255,255,255,.7)" stroke="rgba(7,45,80,.1)">
+          <rect x="120" y="130" width="200" height="150" rx="22"/><rect x="360" y="130" width="140" height="150" rx="22"/>
+          <rect x="540" y="130" width="160" height="230" rx="22"/><rect x="120" y="320" width="120" height="200" rx="22"/>
+          <rect x="280" y="320" width="220" height="200" rx="22"/><rect x="540" y="400" width="160" height="120" rx="22"/>
+          <rect x="120" y="560" width="300" height="130" rx="22"/><rect x="460" y="560" width="240" height="130" rx="22"/>
+        </g>
+        <g stroke="rgba(7,45,80,.18)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round" fill="none">
+          <path d="M100 300 H720 M100 540 H720 M340 110 V710 M520 110 V710 M260 300 V540"/>
+        </g>
+        <path id="heroRoute" d="M150 540 H340 V300 H520 V110" fill="none" stroke="rgba(7,45,80,.07)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="route-draw" pathLength="1" d="M150 540 H340 V300 H520 V110" fill="none" stroke="url(#rg)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="150" cy="540" r="14" fill="#0284c7"/>
+        <g transform="translate(520 110)"><circle class="pulse" r="20" fill="none" stroke="#fe5c8d" stroke-width="3"/><circle class="pulse d2" r="20" fill="none" stroke="#fe5c8d" stroke-width="3"/><circle r="16" fill="#fe5c8d"/><circle r="6" fill="#fff"/></g>
+        <g>
+          <circle r="22" fill="#072d50" opacity=".14"><animateMotion dur="7s" begin="2.4s" repeatCount="indefinite" path="M150 540 H340 V300 H520 V110" keyPoints="0;1;1" keyTimes="0;.85;1" calcMode="linear"/></circle>
+          <circle r="11" fill="#072d50"><animateMotion dur="7s" begin="2.4s" repeatCount="indefinite" path="M150 540 H340 V300 H520 V110" keyPoints="0;1;1" keyTimes="0;.85;1" calcMode="linear"/></circle>
+        </g>
+        <g transform="translate(360 330)"><g class="bubble">
+          <rect x="0" y="-92" width="290" height="80" rx="20" fill="#072d50"/>
+          <path d="M20 -14 L10 6 L44 -14Z" fill="#072d50"/>
+          <text x="22" y="-62" font-size="14" font-weight="600" fill="#dbf2fc" letter-spacing="2">SPOKEN GUIDANCE</text>
+          <text x="22" y="-32" font-size="23" font-weight="700" fill="#fff">“In 35 m, turn right.”</text>
+        </g></g>
+        <text x="150" y="590" font-size="17" fill="#35566f" text-anchor="middle">Start</text>
+        <text x="560" y="98" font-size="17" fill="#35566f">Building entrance</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 2 · AGENDA -->
+  <section class="slide" data-accent="#4f46e5" data-accent2="#0284c7" data-section="Agenda"
+    data-notes="Quick roadmap. Most of our time goes to section 5, the design: first the architecture, then each of the eight subsystems.">
+    <div class="kicker rv" style="--i:0">Agenda</div>
+    <h1 class="title rv" style="--i:1">Today's route</h1>
+    <div class="agenda">
+      <div class="ag rv" style="--i:2;--c:var(--map)"><div class="n">1</div><h3>Introduction</h3><p>What Argus is</p></div>
+      <div class="ag rv" style="--i:3;--c:var(--route)"><div class="n">2</div><h3>Problem</h3><p>Why campus wayfinding is hard</p></div>
+      <div class="ag rv" style="--i:4;--c:var(--train)"><div class="n">3</div><h3>Goal &amp; Objectives</h3><p>What we are building</p></div>
+      <div class="ag rv" style="--i:5;--c:var(--recog)"><div class="n">4</div><h3>Requirements</h3><p>Functional and non-functional</p></div>
+      <div class="ag hl rv" style="--i:6;--c:var(--guide)"><div class="n">5</div><h3>Design</h3><p>Architecture, then eight subsystems</p></div>
+      <div class="ag rv" style="--i:7;--c:var(--test)"><div class="n">6</div><h3>Status &amp; Next</h3><p>Prototype and timeline</p></div>
+    </div>
+  </section>
+
+  <!-- 3 · INTRO -->
+  <section class="slide" data-accent="#0284c7" data-accent2="#16a34a" data-section="Introduction"
+    data-notes="Three ingredients. The iPhone does the processing. Meta glasses add a camera, microphone and speakers where the toolkit supports it. Campus map data, prepared by our team, describes sidewalks, crossings and entrances. If the glasses disconnect, the phone keeps navigating.">
+    <div class="kicker rv" style="--i:0">01 · Introduction</div>
+    <h1 class="title rv" style="--i:1">Three parts, <span class="grad">one guide</span></h1>
+    <p class="lede rv" style="--i:2">Argus helps blind and low-vision pedestrians move around Tennessee State University using spoken directions and vibration, without needing to watch a screen.</p>
+    <div class="trio">
+      <div class="card rv" style="--i:3;--c:var(--pos)"><div class="ic" data-icon="phone"></div><div class="role">The brain</div><h3>iPhone</h3><p>Runs the app. Its GPS, compass, accelerometer and gyroscope track where the user is and which way they face.</p></div>
+      <div class="card rv" style="--i:4;--c:var(--glass)"><div class="ic" data-icon="glass"></div><div class="role">Eyes &amp; ears</div><h3>Meta smart glasses</h3><p>Camera, microphone and speakers for landmarks, voice commands and audio, where supported. The phone takes over if they disconnect.</p></div>
+      <div class="card rv" style="--i:5;--c:var(--map)"><div class="ic" data-icon="map"></div><div class="role">The ground truth</div><h3>Campus map data</h3><p>Sidewalks, crossings, ramps, stairs and entrances, mapped by our team and checked on foot.</p></div>
+    </div>
+  </section>
+
+  <!-- 4 · PROBLEM -->
+  <section class="slide s-problem" data-accent="#e8457a" data-accent2="#4f46e5" data-section="Problem"
+    data-notes="A route on a map is not enough. Our users need to reach the right entrance, hear a turn before they reach it, and know what happens if they drift off the path. GPS near buildings is often inaccurate, so the system must handle uncertainty honestly.">
+    <div>
+      <div class="kicker rv" style="--i:0">02 · Problem statement</div>
+      <div class="quote rv" style="--i:1">“How do I know I'm on the <span class="grad">right path?</span>”</div>
+      <p class="lede rv" style="--i:2">Mainstream navigation apps assume you can look at the screen. Near buildings, GPS readings also drift, often right where decisions happen.</p>
+    </div>
+    <div class="qs">
+      <div class="q card rv" style="--i:3;--c:var(--map)"><div class="n">1</div><div><h3>Which entrance?</h3><p>A building is not a destination. A usable, accessible door is.</p></div></div>
+      <div class="q card rv" style="--i:4;--c:var(--guide)"><div class="n">2</div><div><h3>When do I turn?</h3><p>The instruction has to come <em>before</em> the decision point.</p></div></div>
+      <div class="q card rv" style="--i:5;--c:var(--recog)"><div class="n">3</div><div><h3>What if I drift off?</h3><p>Detect the departure, then recover, or say so if location is unreliable.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 5 · GOAL -->
+  <section class="slide" data-accent="#9333ea" data-accent2="#0284c7" data-section="Goal & Objectives"
+    data-notes="Our goal in one sentence, then four objectives that map directly onto the subsystems you'll see in the design: prepare the map, guide the walk, add wearable context, and evaluate.">
+    <div class="kicker rv" style="--i:0">03 · Goal &amp; objectives</div>
+    <h1 class="title rv" style="--i:1">What we are building</h1>
+    <div class="goal card rv" style="--i:2"><span class="lab">GOAL</span>Build an accessible navigation system that combines <b>campus route data</b>, <b>phone sensors</b> and <b>wearable context</b> to guide blind and low-vision pedestrians between locations on the TSU campus.</div>
+    <div class="objs">
+      <div class="obj card rv" style="--i:3;--c:var(--map)"><div class="k">01 · MAP</div><h3>Prepare campus data</h3><p>Map selected routes, entrances and accessibility features. Check them on foot.</p></div>
+      <div class="obj card rv" style="--i:4;--c:var(--guide)"><div class="k">02 · GUIDE</div><h3>Guide the journey</h3><p>Plan accessible routes, announce turns early, and recover from deviations.</p></div>
+      <div class="obj card rv" style="--i:5;--c:var(--glass)"><div class="k">03 · CONNECT</div><h3>Add context</h3><p>Use supported glasses features and recognize selected landmarks.</p></div>
+      <div class="obj card rv" style="--i:6;--c:var(--test)"><div class="k">04 · EVALUATE</div><h3>Prove it works</h3><p>Record and replay walks, run supervised trials, and review accessibility.</p></div>
+    </div>
+  </section>
+
+  <!-- 6 · FUNCTIONAL REQUIREMENTS -->
+  <section class="slide" data-accent="#fe5c8d" data-accent2="#e8457a" data-section="Requirements"
+    data-notes="Thirteen requirement groups from Chapter 2. The colors are the subsystem that owns each group. Keep these colors in mind, because they carry through the architecture and the detailed design.">
+    <div class="kicker rv" style="--i:0">04 · Functional requirements</div>
+    <h1 class="title rv" style="--i:1">Every requirement has an <span class="grad">owner</span></h1>
+    <div class="reqgrid">
+      <div class="req rv pop" style="--i:2;--c:var(--map)"><div class="id">R1</div><h4>Campus mapping</h4><small>Campus Mapping</small></div>
+      <div class="req rv pop" style="--i:3;--c:var(--route)"><div class="id">R2</div><h4>Graph import &amp; validation</h4><small>Route Planning</small></div>
+      <div class="req rv pop" style="--i:4;--c:var(--guide)"><div class="id">R3</div><h4>Accessible interface</h4><small>Interface &amp; Guidance</small></div>
+      <div class="req rv pop" style="--i:5;--c:var(--pos)"><div class="id">R4</div><h4>Positioning</h4><small>Positioning</small></div>
+      <div class="req rv pop" style="--i:6;--c:var(--route)"><div class="id">R5</div><h4>Routing &amp; recalculation</h4><small>Route Planning</small></div>
+      <div class="req rv pop" style="--i:7;--c:var(--guide)"><div class="id">R6</div><h4>Speech &amp; vibration</h4><small>Interface &amp; Guidance</small></div>
+      <div class="req rv pop" style="--i:8;--c:var(--glass)"><div class="id">R7</div><h4>Glasses connection</h4><small>Glasses Connection</small></div>
+      <div class="req rv pop" style="--i:9;--c:var(--recog)"><div class="id">R8</div><h4>Landmark recognition</h4><small>Model Training + Recognition</small></div>
+      <div class="req opt rv pop" style="--i:10;--c:var(--guide)"><div class="id">R9</div><h4>Apple Watch</h4><small>Optional · Guidance</small></div>
+      <div class="req rv pop" style="--i:11;--c:var(--test)"><div class="id">R10</div><h4>Recording &amp; replay</h4><small>Testing &amp; Replay</small></div>
+      <div class="req rv pop" style="--i:12;--c:var(--test)"><div class="id">R11</div><h4>Supervised trials</h4><small>Testing &amp; Replay</small></div>
+      <div class="req rv pop" style="--i:13;--c:var(--test)"><div class="id">R12</div><h4>Accessibility review</h4><small>Testing &amp; Replay</small></div>
+      <div class="req rv pop" style="--i:14;--c:var(--store)"><div class="id">R13</div><h4>Reproducible delivery</h4><small>Whole project</small></div>
+    </div>
+  </section>
+
+  <!-- 7 · NON-FUNCTIONAL -->
+  <section class="slide" data-accent="#0d9488" data-accent2="#fe5c8d" data-section="Requirements"
+    data-notes="Four qualities, each with the evidence we'll collect. These are acceptance checks we plan to run, not results we are claiming yet.">
+    <div class="kicker rv" style="--i:0">04 · Non-functional requirements</div>
+    <h1 class="title rv" style="--i:1">Quality we can <span class="grad">measure</span></h1>
+    <div class="nfr">
+      <div class="card rv" style="--i:2;--c:var(--guide)"><div class="ic" data-icon="access"></div><div><h3>Accessible by default</h3><p>A full journey works with VoiceOver and supported voice commands.</p><div class="ev">EVIDENCE · task completion, focus order</div></div></div>
+      <div class="card rv" style="--i:3;--c:var(--pos)"><div class="ic" data-icon="clock"></div><div><h3>Timely &amp; clear</h3><p>Instructions arrive early enough to act on before the decision point.</p><div class="ev">EVIDENCE · cue timestamps vs. distance to turn</div></div></div>
+      <div class="card rv" style="--i:4;--c:var(--recog)"><div class="ic" data-icon="shield"></div><div><h3>Fails safely</h3><p>Unreliable location, no route or a dropped wearable is announced, never hidden.</p><div class="ev">EVIDENCE · controlled failure scenarios</div></div></div>
+      <div class="card rv" style="--i:5;--c:var(--test)"><div class="ic" data-icon="db"></div><div><h3>Reproducible</h3><p>Every decision can be replayed from saved inputs, and users control their recordings.</p><div class="ev">EVIDENCE · versioned replay fixtures</div></div></div>
+    </div>
+  </section>
+
+  <!-- 8 · ARCHITECTURE -->
+  <section class="slide s-arch" id="arch" data-steps="6" data-accent="#4f46e5" data-accent2="#0d9488" data-section="Design · Architecture"
+    data-notes="Build this one step at a time. Step 1: preparation on the laptop. Step 2: sensing and planning on the phone. Step 3: guidance. Step 4: wearables. Step 5: testing and replay. Step 6: the whole picture. Point out that every arrow is a defined interface. You can click any subsystem to jump to its detail slide.">
+    <div class="arch-head">
+      <div>
+        <div class="kicker rv" style="--i:0">05 · Architectural design</div>
+        <h1 class="title sm rv" style="--i:1">How the system fits together</h1>
+      </div>
+    </div>
+    <div class="arch-wrap rv fade" style="--i:2"></div>
+    <div class="arch-cap card rv" style="--i:4"></div>
+  </section>
+
+  <!-- 9 · DESIGN DECISIONS -->
+  <section class="slide" data-accent="#16a34a" data-accent2="#4f46e5" data-section="Design · Architecture"
+    data-notes="Why this organization? Four decisions. The phone owns processing. Heavy preparation happens offline. When uncertain, we tell the user instead of guessing. Replay is built into the architecture, so navigation logic can be tested without walking.">
+    <div class="kicker rv" style="--i:0">05 · Architecture decisions</div>
+    <h1 class="title rv" style="--i:1">Why it's organized this way</h1>
+    <div class="dec">
+      <div class="card rv" style="--i:2;--c:var(--pos)"><div class="n">01</div><h3>The <em>iPhone</em> does the thinking</h3><p>Positioning, routing and guidance run on the phone. Glasses and watch are extra ways to interact, so navigation never depends on them.</p></div>
+      <div class="card rv" style="--i:3;--c:var(--map)"><div class="n">02</div><h3>Prepare <em>offline</em>, run on device</h3><p>Mapping and model training happen on the team laptop before deployment. Nothing is trained while someone is walking.</p></div>
+      <div class="card rv" style="--i:4;--c:var(--recog)"><div class="n">03</div><h3>Fail <em>safely</em>, not silently</h3><p>If location is unreliable or no accessible route exists, the user is told, instead of getting directions that may be wrong.</p></div>
+      <div class="card rv" style="--i:5;--c:var(--test)"><div class="n">04</div><h3><em>Replayable</em> by design</h3><p>Recorded readings enter Positioning exactly like live ones, so every subsystem can be developed and tested on its own.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 · SUBSYSTEM INDEX -->
+  <section class="slide" id="subidx" data-accent="#9333ea" data-accent2="#fe5c8d" data-section="Design · Detailed"
+    data-notes="Detailed design goes one level below the architecture. Each subsystem has numbered components in the order data moves: inputs on the left, outputs on the right.">
+    <div class="kicker rv" style="--i:0">05 · Detailed design</div>
+    <h1 class="title rv" style="--i:1">One level deeper: <span class="grad">eight subsystems</span></h1>
+    <div class="subidx"></div>
+    <div class="idx-flow rv" style="--i:12"><span>Each slide reads</span><b>inputs</b><span>→</span><b>numbered components, in data order</b><span>→</span><b>outputs</b></div>
+  </section>
+
+  <!-- 11–18 · SUBSYSTEMS (rendered by app.js) -->
+  <section class="slide s-sub" data-sub="map"></section>
+  <section class="slide s-sub" data-sub="train"></section>
+  <section class="slide s-sub" data-sub="pos"></section>
+  <section class="slide s-sub" data-sub="route"></section>
+  <section class="slide s-sub" data-sub="guide"></section>
+  <section class="slide s-sub" data-sub="recog"></section>
+  <section class="slide s-sub" data-sub="glass"></section>
+  <section class="slide s-sub" data-sub="test"></section>
+
+  <!-- 19 · PRELIMINARY WORK -->
+  <section class="slide" data-accent="#ca8a04" data-accent2="#0284c7" data-section="Status"
+    data-notes="What runs today, captured from the iPhone simulator. Home: voice destination and walking-route preview. Simulate: turn cues and deviations from scripted movement. Record: captures GPS and sensors for replay. Full native live guidance is the next milestone.">
+    <div class="kicker rv" style="--i:0">06 · Preliminary work</div>
+    <h1 class="title rv" style="--i:1">What runs <span class="grad">today</span></h1>
+    <div class="phones">
+      <div class="ph rv" style="--i:2;--c:var(--guide)"><div class="frame"><img src="../assets/app-home.png" alt="Argus Home screen"></div><div><div class="badge">IMPLEMENTED</div><h3>Home</h3><p>Voice destination input and a walking-route preview.</p><ul><li>Speak a destination</li><li>Preview the route</li></ul></div></div>
+      <div class="ph rv" style="--i:3;--c:var(--route)"><div class="frame"><img src="../assets/app-simulate.png" alt="Argus Simulate screen"></div><div><div class="badge">SCRIPTED INPUTS</div><h3>Simulate</h3><p>Turn cues and route deviation driven by repeatable movement.</p><ul><li>3 scenarios</li><li>Spoken cues</li></ul></div></div>
+      <div class="ph rv" style="--i:4;--c:var(--test)"><div class="frame"><img src="../assets/app-record.png" alt="Argus Record screen"></div><div><div class="badge">IMPLEMENTED</div><h3>Record</h3><p>Captures GPS, accuracy, sensors and manual marks.</p><ul><li>Save &amp; export</li><li>Replay a walk</li></ul></div></div>
+    </div>
+    <div class="foot rv fade" style="--i:6">Screens captured from the Argus iPhone simulator build · SwiftUI + MapKit · not a field-validated result</div>
+  </section>
+
+  <!-- 20 · TIMELINE -->
+  <section class="slide" data-accent="#16a34a" data-accent2="#ca8a04" data-section="Next steps"
+    data-notes="Proposed schedule through May 2027. Each phase ends with a gate, which is evidence we must have before moving on. This is for advisor review, not a fixed commitment.">
+    <div class="kicker rv" style="--i:0">06 · Future work</div>
+    <h1 class="title rv" style="--i:1">From prototype to a <span class="grad">tested journey</span></h1>
+    <div class="tl">
+      <div class="bar"></div>
+      <div class="ph2 rv" style="--i:2;--c:var(--map)"><span class="now">WE ARE HERE</span><div class="when">NOV–DEC 2026</div><h3>Verify the data</h3><p>Walk the study routes. Record entrances, stairs and alternatives.</p><div class="gate"><b>Gate</b> · graph checked by a second walker</div></div>
+      <div class="ph2 rv" style="--i:3;--c:var(--route)"><div class="when">JAN–FEB 2027</div><h3>Unify guidance</h3><p>One session for live and replayed inputs, routing and recovery.</p><div class="gate"><b>Gate</b> · one supervised route + a wrong-turn case</div></div>
+      <div class="ph2 rv" style="--i:4;--c:var(--glass)"><div class="when">MAR 2027</div><h3>Connect &amp; recognize</h3><p>Confirm glasses features. Train and test a small landmark model.</p><div class="gate"><b>Gate</b> · measured accuracy, latency, fallback</div></div>
+      <div class="ph2 rv" style="--i:5;--c:var(--guide)"><div class="when">APR 2027</div><h3>Evaluate</h3><p>Accessibility, cue timing, route completion and failure cases.</p><div class="gate"><b>Gate</b> · supervised results with counts</div></div>
+      <div class="ph2 rv" style="--i:6;--c:var(--test)"><div class="when">MAY 2027</div><h3>Deliver</h3><p>Software, route data, replay fixtures, results and guides.</p><div class="gate"><b>Gate</b> · someone else can reproduce the demo</div></div>
+    </div>
+    <div class="foot rv fade" style="--i:8">Proposed schedule for advisor review · field access and confirmed device capabilities are dependencies</div>
+  </section>
+
+  <!-- 21 · CLOSING -->
+  <section class="slide s-end" data-accent="#fe5c8d" data-accent2="#4f46e5" data-section="Questions"
+    data-notes="Close with the three pillars, thank Dr. Sekmen, and open for questions. The architecture slide is a good one to return to during Q&A. Press G to jump there.">
+    <div class="orbit">
+      <i style="--c:var(--map);--r:520px;--t:40s;--dl:0s"></i><i style="--c:var(--route);--r:520px;--t:40s;--dl:-5s"></i>
+      <i style="--c:var(--train);--r:520px;--t:40s;--dl:-10s"></i><i style="--c:var(--recog);--r:520px;--t:40s;--dl:-15s"></i>
+      <i style="--c:var(--pos);--r:520px;--t:40s;--dl:-20s"></i><i style="--c:var(--guide);--r:520px;--t:40s;--dl:-25s"></i>
+      <i style="--c:var(--glass);--r:520px;--t:40s;--dl:-30s"></i><i style="--c:var(--test);--r:520px;--t:40s;--dl:-35s"></i>
+    </div>
+    <div class="kicker rv" style="--i:0">Thank you</div>
+    <div class="big rv" style="--i:1"><span class="grad">Questions?</span></div>
+    <div class="pillars">
+      <span class="rv pop" style="--i:3;--c:var(--map)">Verified campus data</span>
+      <span class="rv pop" style="--i:4;--c:var(--guide)">Guidance you can hear</span>
+      <span class="rv pop" style="--i:5;--c:var(--test)">Evidence you can replay</span>
+    </div>
+    <p class="lede rv" style="--i:6;margin-top:56px">Edmund Afunyah · Sydney Apenteng<br><span style="font-size:22px">Advisor &amp; Instructor: Dr. Ali Sekmen · Tennessee State University</span></p>
+  </section>
+
+  <div id="progress"></div>
+  <div id="section"></div>
+  <div id="counter"></div>
+</div>
+</div>
+<div id="notes"></div>
+<div id="overview"><h2>SLIDES · click to jump · Esc to close</h2><div class="g"></div></div>
+<div id="help">→ next · ⇧→ skip builds · G slides · N notes · F fullscreen</div>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
