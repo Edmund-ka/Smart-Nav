@@ -12,7 +12,7 @@
   --brand-ink2: #35566f;
   --brand-mist: #dbf2fc;
   --brand-pink: #fe5c8d;
-  --bg: #f5fbfe;
+  --bg: #f5f4ef;
   --ink: #072d50;
   --muted: #35566f;
   --faint: #7890a5;
@@ -37,7 +37,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; background: #e9f5fb; overflow: hidden; }
+html, body { height: 100%; background: var(--bg); overflow: hidden; }
 body {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--ink);
@@ -51,10 +51,11 @@ body {
 #stage {
   position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px;
   transform-origin: center center; overflow: hidden;
-  background: linear-gradient(135deg, var(--brand-mist) 0%, #ffffff 48%, color-mix(in srgb, var(--brand-pink) 12%, #ffffff) 100%);
+  background: var(--bg);
 }
 
 /* aurora background */
+.aurora, .grain { display: none; }
 .aurora { position: absolute; inset: -20%; pointer-events: none; z-index: 0; filter: blur(100px); opacity: .22; }
 .aurora i { position: absolute; border-radius: 50%; }
 .aurora i:nth-child(1) { width: 900px; height: 900px; left: 4%; top: -4%; background: radial-gradient(circle, var(--accent) 0%, transparent 65%); animation: drift1 26s ease-in-out infinite alternate; }
