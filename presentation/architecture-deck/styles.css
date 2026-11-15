@@ -104,10 +104,10 @@ body {
   font-size: 19px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
   color: var(--accent);
 }
-.kicker::before { content: ""; width: 44px; height: 4px; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--brand-pink)); }
+.kicker::before { content: ""; width: 44px; height: 4px; border-radius: 3px; background: var(--brand-pink); }
 h1.title { font-size: 64px; line-height: 1.08; font-weight: 700; letter-spacing: -.02em; margin-top: 18px; }
 h1.title.sm { font-size: 54px; }
-.grad { background: linear-gradient(100deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.grad { color: var(--brand-pink); }
 .lede { font-size: 27px; line-height: 1.5; color: var(--muted); max-width: 1180px; margin-top: 22px; }
 .muted { color: var(--muted); }
 .mono { font-family: var(--mono); }
@@ -394,7 +394,7 @@ h1.title.sm { font-size: 54px; }
 @keyframes orbit { from { transform: rotate(0deg) translateX(var(--r)) rotate(0deg); } to { transform: rotate(360deg) translateX(var(--r)) rotate(-360deg); } }
 
 /* ---------- Chrome ---------- */
-#progress { position: absolute; left: 0; bottom: 0; height: 6px; z-index: 20; background: linear-gradient(90deg, var(--brand-ink), var(--brand-pink)); transition: width .7s var(--ease); }
+#progress { position: absolute; left: 0; bottom: 0; height: 6px; z-index: 20; background: var(--brand-pink); transition: width .7s var(--ease); }
 #counter { position: absolute; right: 40px; bottom: 26px; z-index: 20; font-family: var(--mono); font-size: 15px; color: var(--faint); letter-spacing: .08em; }
 #section { position: absolute; left: 96px; bottom: 24px; z-index: 20; font-size: 15px; color: var(--faint); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; display: flex; align-items: center; gap: 16px; }
 #section .mark { font-size: 20px; letter-spacing: -.01em; text-transform: none; color: var(--brand-ink); font-weight: 700; padding-right: 16px; border-right: 1.5px solid var(--line); }
