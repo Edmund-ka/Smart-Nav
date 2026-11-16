@@ -66,7 +66,7 @@
   <section class="slide" data-accent="#4f46e5" data-accent2="#0284c7" data-section="Agenda"
     data-notes="Quick roadmap. Most of our time goes to section 5, the design: first the architecture, then each of the eight subsystems.">
     <div class="kicker rv" style="--i:0">Agenda</div>
-    <h1 class="title rv" style="--i:1">Today's route</h1>
+    <h1 class="title rv" style="--i:1">Today's <span class="grad">route</span></h1>
     <div class="agenda">
       <div class="ag rv" style="--i:2;--c:var(--map)"><div class="n">1</div><h3>Introduction</h3><p>What Argus is</p></div>
       <div class="ag rv" style="--i:3;--c:var(--route)"><div class="n">2</div><h3>Problem</h3><p>Why campus wayfinding is hard</p></div>
@@ -109,7 +109,7 @@
   <section class="slide" data-accent="#9333ea" data-accent2="#0284c7" data-section="Goal & Objectives"
     data-notes="Our goal in one sentence, then four objectives that map directly onto the subsystems you'll see in the design: prepare the map, guide the walk, add wearable context, and evaluate.">
     <div class="kicker rv" style="--i:0">03 · Goal &amp; objectives</div>
-    <h1 class="title rv" style="--i:1">What we are building</h1>
+    <h1 class="title rv" style="--i:1">What we are <span class="grad">building</span></h1>
     <div class="goal card rv" style="--i:2"><span class="lab">GOAL</span>Build an accessible navigation system that combines <b>campus route data</b>, <b>phone sensors</b> and <b>wearable context</b> to guide blind and low-vision pedestrians between locations on the TSU campus.</div>
     <div class="objs">
       <div class="obj card rv" style="--i:3;--c:var(--map)"><div class="k">01 · MAP</div><h3>Prepare campus data</h3><p>Map selected routes, entrances and accessibility features. Check them on foot.</p></div>
@@ -160,7 +160,7 @@
     <div class="arch-head">
       <div>
         <div class="kicker rv" style="--i:0">05 · Architectural design</div>
-        <h1 class="title sm rv" style="--i:1">How the system fits together</h1>
+        <h1 class="title sm rv" style="--i:1">How the system <span class="grad">fits together</span></h1>
       </div>
     </div>
     <div class="arch-wrap rv fade" style="--i:2"></div>
@@ -171,7 +171,7 @@
   <section class="slide" data-accent="#16a34a" data-accent2="#4f46e5" data-section="Design · Architecture"
     data-notes="Why this organization? Four decisions. The phone owns processing. Heavy preparation happens offline. When uncertain, we tell the user instead of guessing. Replay is built into the architecture, so navigation logic can be tested without walking.">
     <div class="kicker rv" style="--i:0">05 · Architecture decisions</div>
-    <h1 class="title rv" style="--i:1">Why it's organized this way</h1>
+    <h1 class="title rv" style="--i:1">Why it's <span class="grad">organized this way</span></h1>
     <div class="dec">
       <div class="card rv" style="--i:2;--c:var(--pos)"><div class="n">01</div><h3>The <em>iPhone</em> does the thinking</h3><p>Positioning, routing and guidance run on the phone. Glasses and watch are extra ways to interact, so navigation never depends on them.</p></div>
       <div class="card rv" style="--i:3;--c:var(--map)"><div class="n">02</div><h3>Prepare <em>offline</em>, run on device</h3><p>Mapping and model training happen on the team laptop before deployment. Nothing is trained while someone is walking.</p></div>

@@ -358,7 +358,7 @@ function initSub(slide) {
     <div class="sub-head">
       <div>
         <div class="kicker rv" style="--i:0">05 · Detailed design · ${idx + 1} of 8</div>
-        <h1 class="rv" style="--i:1">${esc(s.name)}</h1>
+        <h1 class="rv" style="--i:1">${esc(s.name).replace(/(\S+)$/, '<span class="grad">$1</span>')}</h1>
         <div class="chips rv" style="--i:2">${reqs}<span class="chip"><span class="dot" style="color:${s.color}"></span>${esc(s.where)}</span></div>
       </div>
       <div class="locator rv fade" style="--i:3" title="Location in the architecture">${locatorSVG(s.id)}</div>
