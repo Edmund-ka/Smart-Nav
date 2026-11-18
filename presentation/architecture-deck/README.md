@@ -11,7 +11,7 @@
 | N | speaker notes (shown on the same screen) |
 | F | full screen |
 
-The architecture slide (7) builds in 6 steps. Each subsystem slide (10–17) builds itself, then → spotlights components 1…n, then shows a **key idea** visual. Clicking a block on the architecture or a tile on slide 9 jumps to that subsystem. Clicking a component card spotlights it.
+The architecture slide (7) builds in 6 steps. Each subsystem slide (9–16) builds itself, then → spotlights components 1…n, then shows a **key idea** visual. Clicking a block on the architecture or a tile on slide 8 jumps to that subsystem. Clicking a component card spotlights it.
 
 **Edit:** `index.html` (static slides), `app.js` (subsystem data in `SUBS`, architecture layout in `AN`/`AE`, step captions in `ARCH_STEPS`), `styles.css`. Rebuild the portable file:
 
