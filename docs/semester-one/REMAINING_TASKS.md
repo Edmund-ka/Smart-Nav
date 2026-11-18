@@ -1,0 +1,15 @@
+# Remaining Semester 1 tasks — priority order
+
+| Priority | Task | Completion evidence / dependency |
+| --- | --- | --- |
+| P0 — before live outdoor guidance | Survey Boyd/library endpoints, junctions, steps, access attributes and connected alternative; independently review graph. | Completed field checklist, reference photos/measurements, source/checker/date metadata, both format validators pass. No candidate flag promotion without evidence. |
+| P0 — before walking test | Sign/install on intended iPhone and complete stationary permissions, speech, haptics, recording/export and interruption tests. | Device/build identifiers and PASS/FAIL/NOT RUN table with exports. Unsigned build does not satisfy this task. |
+| P0 — before claiming field success | Obtain independent position/door reference and fresh recordings with stationary start acquisition, explicit turn labels, observer timestamps and endpoint dwell. | Explain each expected/actual discrepancy; keep current negative bundled result as evidence. Do not tune thresholds on one trace. |
+| P1 — reproducible live trials | Capture exact selected route/edges, preferences/settings, callback delivery times, timer/permission/lifecycle changes and live output events; support recording the selected journey. | Same captured inputs/clocks replay to identical decisions. Current snapshots/endpoints and sensor-time parity do not cover arbitrary live journeys. |
+| P1 — configuration evaluation | Measure how often 8 m match/5 m arrival uncertainty rules are achievable on surveyed routes; calibrate on separate data, evaluate on held-out walks. | Report false/missed departure, recovery and arrival, uncertainty coverage and latency. Any change justified with independent evidence, not a forced pass. |
+| P1 — accessibility | Complete VoiceOver/larger-text/audio-interruption review and supervised intended-user trials; refine cue/haptic usability where observed. | Advisor-approved procedure, assistance/wrong-turn/completion metrics and unresolved issue log. |
+| P1 — report | Apply reviewed component-diagram changes and actual equations to a separately edited report version; preserve original professor materials. | Diagram arrows/labels match code, future hardware clearly marked, real/synthetic results separated. |
+| P2 — remaining scope | Agree 3–5 study routes; expand verified survey coverage, entrance descriptions and mapped warning coverage; complete independent installation handoff. | Reviewed route datasets, repeated trial evidence and reproducible build/install instructions. |
+| P2 — only when evidence calls for it | Assess partial-edge recovery, travel heading, complete voice-only flow and graph performance. | Specific observed limitation and regression/field evidence for each change. Do not add features during this verification pass. |
+
+Deferred semester 2: hardware/toolkit capability investigation, supported glasses adapters, landmark dataset/training/Core ML recognition, synchronized video replay, and optional Watch integration. No current claims of live obstacle detection or sensor fusion.

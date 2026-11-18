@@ -63,7 +63,7 @@ const SUBS = [
    comps:[
     ["Graph loading","GeoJSON to graph","Read the bundled GeoJSON into nodes and edges in memory."],
     ["Graph validation","error report","Check that the graph is connected and well formed, and report errors before any route is planned."],
-    ["Accessible path search","A* with costs","A* search over edge costs that combine distance with accessibility, so stairs can be avoided."],
+    ["Accessible path search","Dijkstra with costs","Dijkstra search over edge costs that combine distance with accessibility, so stairs can be avoided."],
     ["Route steps","turns, decision points","Extract the turns and intersections along the path and hand them to Guidance."],
     ["Deviation and rerouting","off-route check","If the user leaves the route, plan a new accessible path, or tell them when no reliable path exists."]],
    key:"route", keyTitle:"Cost decides the route" },
@@ -112,6 +112,186 @@ const SUBS = [
     ["Accessibility review","and limitations","Review the VoiceOver and voice-control journey and document the system's limits."]],
    key:"test", keyTitle:"A real walk, replayed" }
 ];
+
+/* November 17 implementation audit: preserve layout while distinguishing built and planned components. */
+const IMPLEMENTED_UPDATE = {
+  "map": {
+    "where": "Implemented · candidate + reviewed route",
+    "archSub": "candidate graph; one walk-reviewed route",
+    "summary": "Imports campus paths as nodes and edges and preserves field evidence. Candidate data is distinct from a walk-reviewed route.",
+    "comps": [
+      [
+        "Map data collection",
+        "OSM and campus sources",
+        "Import candidate paths without treating them as field-verified."
+      ],
+      [
+        "Graph and route review",
+        "nodes, edges, evidence",
+        "3,158 candidate nodes and 3,323 edges; Home uses a separate 8-node reviewed route."
+      ],
+      [
+        "Field photographs",
+        "stairs and library entrance",
+        "Preserve the walker’s photos and confirmation of stairs, right turns and the working door button."
+      ],
+      [
+        "Validation and survey",
+        "components, missing links",
+        "Report 36 components and 11 isolated nodes. Survey gaps before connecting paths."
+      ]
+    ]
+  },
+  "pos": {
+    "where": "Implemented · iPhone position updates",
+    "archSub": "Core Location; filtering and route confidence",
+    "summary": "Checks timestamped location fixes, projects accepted positions onto the route and exposes uncertainty. No custom GPS–motion fusion is implemented.",
+    "inputs": [
+      [
+        "Core Location",
+        "position, accuracy, time"
+      ],
+      [
+        "Replay / simulation",
+        "timestamped positions"
+      ]
+    ],
+    "comps": [
+      [
+        "Input adapters",
+        "live, simulation, replay",
+        "Adapters provide positions to the same NavigationSession."
+      ],
+      [
+        "Fix filtering",
+        "accuracy, age, outliers",
+        "Reject unsuitable readings and flag stale live updates."
+      ],
+      [
+        "Route projection",
+        "progress and ambiguity",
+        "Project onto route geometry and assess confidence rather than blindly snapping to the closest path."
+      ],
+      [
+        "Uncertainty monitor",
+        "guidance state",
+        "Uncertain readings do not establish reliable route progress or arrival."
+      ]
+    ],
+    "keyTitle": "Route projection and confidence"
+  },
+  "route": {
+    "summary": "Validates graph data and uses Dijkstra to select permitted edges. Reviewed-route permission is specific to Boyd → library.",
+    "comps": [
+      [
+        "Graph loading",
+        "JSON and GeoJSON",
+        "Load graph nodes, edges, geometry and verification metadata."
+      ],
+      [
+        "Graph validation",
+        "structure and components",
+        "Check references, geometry and connectivity; disconnected candidate components remain separate."
+      ],
+      [
+        "Path search",
+        "Dijkstra and route rules",
+        "Search permitted edges by cost. The Boyd route includes stairs; no step-free alternate is established."
+      ],
+      [
+        "Route steps",
+        "progress and turn geometry",
+        "Derive route distance, turn locations and instruction timing."
+      ],
+      [
+        "Deviation and rerouting",
+        "conservative eligibility",
+        "Reroute only from an eligible verified unambiguous junction. A field-verified alternate is still needed."
+      ]
+    ]
+  },
+  "guide": {
+    "where": "Implemented · iPhone; wearables planned",
+    "archSub": "phone speech, turn haptics, stairs warning",
+    "outputs": [
+      [
+        "iPhone",
+        "speech and vibration"
+      ],
+      [
+        "Wearables",
+        "planned"
+      ]
+    ],
+    "summary": "Home starts live guidance on the reviewed forward route. The phone speaks cues and supplies event haptics; physical-device usability still needs testing.",
+    "comps": [
+      [
+        "Home controls",
+        "destination, start, stop",
+        "Start the reviewed route using live Core Location input."
+      ],
+      [
+        "Guidance timing",
+        "route progress",
+        "Turn preparation uses a 35 m lead; route confidence governs guidance decisions."
+      ],
+      [
+        "Spoken instructions",
+        "phone text-to-speech",
+        "Speak turns and warnings, including the stairs at Boyd."
+      ],
+      [
+        "Turn vibrations",
+        "left one, right two",
+        "Left uses one medium pulse; right uses two separated by 220 ms. Outdoor usability remains unvalidated."
+      ],
+      [
+        "Watch relay",
+        "planned, optional",
+        "Watch integration is future work.",
+        true
+      ]
+    ]
+  },
+  "test": {
+    "inputs": [
+      [
+        "Sensor readings",
+        "and manual event marks"
+      ]
+    ],
+    "summary": "Records real sensor walks and compares replayed navigation events with manual marks. Recorded evidence and field validation remain distinct.",
+    "comps": [
+      [
+        "Session recording",
+        "GPS, compass, motion, marks",
+        "Store timestamped sensor readings and manual event marks; no camera-video recording."
+      ],
+      [
+        "Shared-engine replay",
+        "sensor timestamps",
+        "Replay and live share navigation logic; live callback-age and stale-timer behavior differ."
+      ],
+      [
+        "Event comparison",
+        "direction and timing",
+        "Latest direction-confirmed evaluation matches two right turns; arrival is missing on the original snapshot."
+      ],
+      [
+        "Walking trials",
+        "supervised, still required",
+        "Test the revised Home route outdoors with a sighted companion and preserve the new recording."
+      ],
+      [
+        "Accessibility review",
+        "speech, haptics, VoiceOver",
+        "Validate usability and document remaining limitations."
+      ]
+    ]
+  }
+};
+SUBS.forEach(s => { if (IMPLEMENTED_UPDATE[s.id]) Object.assign(s, IMPLEMENTED_UPDATE[s.id]); });
+SUBS.filter(s => ["train", "recog", "glass"].includes(s.id)).forEach(s => { s.where = "PLANNED · Semester 2"; s.archSub = "PLANNED · " + s.archSub; s.summary = "Planned design, not implemented: " + s.summary; });
 const SUB = Object.fromEntries(SUBS.map(s => [s.id, s]));
 SUBS.forEach(s => s.color = C[s.id]);
 
@@ -134,7 +314,7 @@ const AN = [
  { id:"mapping", sub:"map", x:45, y:180, w:280, h:110, step:1 },
  { id:"store", kind:"db", x:45, y:345, w:280, h:100, t:"Campus accessibility data", s:"route graph (GeoJSON), photos", step:1 },
  { id:"training", sub:"train", x:45, y:505, w:280, h:110, step:1 },
- { id:"bundle", kind:"db", x:430, y:112, w:250, h:100, t:"App bundle", s:"route graph, landmark model", step:1 },
+ { id:"bundle", kind:"db", x:430, y:112, w:250, h:100, t:"App bundle", s:"route graph; model planned", step:1 },
  { id:"sensors", kind:"hw", x:1120, y:300, w:290, h:120, t:"iPhone sensors", s:"GPS, compass, accelerometer, gyroscope", step:2 },
  { id:"positioning", sub:"pos", x:760, y:300, w:290, h:120, step:2 },
  { id:"routing", sub:"route", x:430, y:300, w:250, h:120, step:2 },
@@ -145,7 +325,7 @@ const AN = [
  { id:"person", kind:"ext", x:1490, y:470, w:290, h:96, t:"Pedestrian", s:"and campus surroundings", step:4 },
  { id:"watch", kind:"opt", x:30, y:728, w:310, h:80, t:"Apple Watch", s:"optional · vibration, quick commands", step:4 },
  { id:"testing", sub:"test", x:760, y:112, w:290, h:110, step:5 },
- { id:"logs", kind:"db", x:1120, y:112, w:290, h:100, t:"Logs and results", s:"sensor logs, video, trial results", step:5 }
+ { id:"logs", kind:"db", x:1120, y:112, w:290, h:100, t:"Logs and results", s:"sensor logs, marks, replay results", step:5 }
 ];
 const AE = [
  { p:[[180,64],[180,180]], c:"map", l:"map data", lx:192, ly:132, a:"start", step:1 },
@@ -388,7 +568,7 @@ const KEY = {
     html: () => `<div class="kv"><svg viewBox="0 0 520 300" id="kv-map">
       <g class="kedges" fill="none" stroke-width="5" stroke-linecap="round"></g><g class="knodes"></g></svg></div>
       <div class="eq" style="font-family:var(--mono);font-size:14.5px;text-align:left;line-height:1.55;color:#1e3a5f">{ "type": "Feature",<br>&nbsp;&nbsp;"geometry": { "type": "LineString", … },<br>&nbsp;&nbsp;"properties": { "<span style="color:var(--map)">stairs</span>": false, "<span style="color:var(--map)">crossing</span>": true } }</div>
-      <div class="note">GeoJSON shown is illustrative; field names will follow our final schema.</div>`,
+      <div class="note">Illustrative GeoJSON view; the implementation uses documented JSON and GeoJSON graph schemas.</div>`,
     start: (pane, s) => {
       const svg = pane.querySelector("#kv-map");
       const N = [[40,250,"e"],[170,250,"d"],[170,140,"x"],[330,140,"d"],[330,40,"e"],[470,140,"d"],[470,250,"e"],[330,250,"s"]];
@@ -443,7 +623,7 @@ const KEY = {
       <text class="dl1" font-size="14" fill="#35566f"></text><text class="dl2" font-size="14" fill="#35566f"></text>
     </svg></div>
     <div class="eq"><i>t</i> = clip<span style="font-size:30px">(</span><span class="frac"><span>(<b>p</b>−<b>a</b>)·(<b>b</b>−<b>a</b>)</span><span>‖<b>b</b>−<b>a</b>‖²</span></span>, 0, 1<span style="font-size:30px">)</span> &nbsp;&nbsp; <i>d</i> = ‖<b>p</b> − (<b>a</b> + <i>t</i>(<b>b</b>−<b>a</b>))‖</div>
-    <div class="note">White dot = raw GPS estimate <b>p</b>. It is placed on the walkway with the smallest <i>d</i>. Proposed method; final choice pending.</div>`,
+    <div class="note">Illustration of point-to-segment projection. The engine also checks accuracy, progress and ambiguity before accepting a route match.</div>`,
     start: (pane, s) => {
       const svg = pane.querySelector("#kv-pos"); const $ = (c) => svg.querySelector(c);
       const A = [[30,200],[490,170]], B = [[40,50],[480,80]];
@@ -468,7 +648,7 @@ const KEY = {
     html: (s) => `<div class="kv"><svg viewBox="0 0 520 260" id="kv-route"></svg></div>
       <div style="display:flex;justify-content:center;gap:12px;margin:2px 0 12px"><span class="chip kav" style="transition:all .4s">Avoid stairs: ON</span><span class="chip kcost" style="font-family:var(--mono)"></span></div>
       <div class="eq"><i>c</i>(<i>e</i>) = <span class="case"><span>∞ &nbsp;&nbsp;if <i>e</i> has stairs and the user avoids stairs</span><span><i>L</i>(<i>e</i>)·<i>m</i>(<i>e</i>) &nbsp;&nbsp;otherwise</span></span></div>
-      <div class="note"><i>L</i> = length in meters · <i>m</i> ≥ 1 penalty for rough surface, steep slope or street crossing. Searched with A*.</div>`,
+      <div class="note"><i>L</i> = length in meters · <i>m</i> ≥ 1 penalty for rough surface, steep slope or street crossing. Dijkstra searches allowed edges. Illustrative alternate paths; no Boyd step-free alternate is verified.</div>`,
     start: (pane, s) => {
       const svg = pane.querySelector("#kv-route");
       const N = { S:[40,130], A:[170,40], B:[170,220], C:[340,40], D:[340,220], G:[480,130] };
@@ -521,7 +701,7 @@ const KEY = {
       <div><b>OFF ROUTE</b><span>≥ 12 m away for 3 readings in a row</span></div>
       <div><b>BACK ON</b><span>≤ 5 m for 3 readings, so one stray fix never alarms</span></div>
     </div>
-    <div class="note">Current prototype settings (ReplayTurnCue, RouteDeviationDetector), not yet field-calibrated. A vibration pattern per event is still to be defined.</div>`,
+    <div class="note">Current prototype settings (TurnInstruction, OffRouteDetector), not yet field-calibrated. A vibration pattern per event is still to be defined.</div>`,
     start: (pane) => {
       const svg = pane.querySelector("#kv-guide"); const $ = (c) => svg.querySelector(c);
       const path = [[30,60],[330,60],[330,240]]; const L1 = 300, L2 = 180, L = L1 + L2;

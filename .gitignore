@@ -12,3 +12,6 @@ xcuserdata/
 # Xcode playground
 timeline.xctimeline
 playground.xcworkspace
+# Python
+__pycache__/
+*.pyc

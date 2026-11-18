@@ -358,7 +358,7 @@ h1.title.sm { font-size: 54px; }
 /* ---------- Prelim ---------- */
 .phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-top: 40px; align-items: start; }
 .ph { display: grid; grid-template-columns: 250px 1fr; gap: 30px; align-items: center; }
-.ph .frame { width: 250px; height: 543px; border-radius: 40px; padding: 9px; background: linear-gradient(160deg, #1b3a5c, #072d50); box-shadow: 0 40px 70px -30px rgba(7,45,80,.6), 0 0 0 1px rgba(7,45,80,.2), 0 20px 60px -20px var(--c); }
+.ph .frame { width: 250px; height: 543px; border-radius: 40px; padding: 9px; background: linear-gradient(160deg, #1b3a5c, #072d50); box-shadow: 0 0 0 1px rgba(7,45,80,.2); }
 .ph .frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 32px; display: block; }
 .slide.active .ph .frame { animation: float 6s ease-in-out infinite; }
 .ph:nth-child(2) .frame { animation-delay: -2s !important; }

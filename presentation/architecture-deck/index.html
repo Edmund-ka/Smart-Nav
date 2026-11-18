@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Argus · Smart-Edge Accessible Campus Navigation</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 <div id="viewport">
@@ -16,10 +16,10 @@
   <section class="slide s-title" data-accent="#0284c7" data-accent2="#fe5c8d" data-section="Introduction"
     data-notes="Introduce the team and the project in one breath: Argus is an accessible campus navigation system for blind and low-vision pedestrians at TSU. Today we focus on how the system is designed: the architecture and each subsystem.">
     <div>
-      <div class="uni rv" style="--i:0">Tennessee State University · COMP 4500 Senior Project I</div>
+      <div class="uni rv" style="--i:0">Tennessee State University · COMP 4500 · November 17, 2026</div>
       <div class="brand rv" style="--i:1">Argus<span>.</span></div>
       <div class="tag rv" style="--i:2">Smart-Edge Accessible <span class="grad">Campus Navigation</span></div>
-      <div class="sub rv" style="--i:3">Spoken, hands-free guidance for blind and low-vision<br>pedestrians, built on iPhone, Meta smart glasses and campus map data.</div>
+      <div class="sub rv" style="--i:3">Spoken, hands-free guidance for blind and low-vision<br>pedestrians, built on iPhone and campus map data.<br>Glasses integration planned for Semester 2.</div>
       <div class="team rv" style="--i:4">
         <div><b>Edmund Afunyah</b><small>Team member</small></div>
         <div><b>Sydney Apenteng</b><small>Team member</small></div>
@@ -68,54 +68,54 @@
     <div class="kicker rv" style="--i:0">Agenda</div>
     <h1 class="title rv" style="--i:1">Today's <span class="grad">route</span></h1>
     <div class="agenda">
-      <div class="ag rv" style="--i:2;--c:var(--map)"><div class="n">1</div><h3>Introduction</h3><p>What Argus is</p></div>
-      <div class="ag rv" style="--i:3;--c:var(--route)"><div class="n">2</div><h3>Problem</h3><p>Why campus wayfinding is hard</p></div>
+      <div class="ag rv" style="--i:2;--c:var(--map)"><div class="n">1</div><h3>Problem Statement</h3><p>Everyday accessibility gaps</p></div>
+      <div class="ag rv" style="--i:3;--c:var(--route)"><div class="n">2</div><h3>Solution</h3><p>Campus navigation and independence</p></div>
       <div class="ag rv" style="--i:4;--c:var(--train)"><div class="n">3</div><h3>Goal &amp; Objectives</h3><p>What we are building</p></div>
-      <div class="ag rv" style="--i:5;--c:var(--recog)"><div class="n">4</div><h3>Requirements</h3><p>Functional and non-functional</p></div>
+      <div class="ag rv" style="--i:5;--c:var(--recog)"><div class="n">4</div><h3>Requirements</h3><p>Functional requirements</p></div>
       <div class="ag hl rv" style="--i:6;--c:var(--guide)"><div class="n">5</div><h3>Design</h3><p>Architecture, then eight subsystems</p></div>
       <div class="ag rv" style="--i:7;--c:var(--test)"><div class="n">6</div><h3>Status &amp; Next</h3><p>Prototype and timeline</p></div>
     </div>
   </section>
 
-  <!-- 3 · INTRO -->
-  <section class="slide" data-accent="#0284c7" data-accent2="#16a34a" data-section="Introduction"
-    data-notes="Three ingredients. The iPhone does the processing. Meta glasses add a camera, microphone and speakers where the toolkit supports it. Campus map data, prepared by our team, describes sidewalks, crossings and entrances. If the glasses disconnect, the phone keeps navigating.">
-    <div class="kicker rv" style="--i:0">01 · Introduction</div>
-    <h1 class="title rv" style="--i:1">Three parts, <span class="grad">one guide</span></h1>
-    <p class="lede rv" style="--i:2">Argus helps blind and low-vision pedestrians move around Tennessee State University using spoken directions and vibration, without needing to watch a screen.</p>
-    <div class="trio">
-      <div class="card rv" style="--i:3;--c:var(--pos)"><div class="ic" data-icon="phone"></div><div class="role">The brain</div><h3>iPhone</h3><p>Runs the app. Its GPS, compass, accelerometer and gyroscope track where the user is and which way they face.</p></div>
-      <div class="card rv" style="--i:4;--c:var(--glass)"><div class="ic" data-icon="glass"></div><div class="role">Eyes &amp; ears</div><h3>Meta smart glasses</h3><p>Camera, microphone and speakers for landmarks, voice commands and audio, where supported. The phone takes over if they disconnect.</p></div>
-      <div class="card rv" style="--i:5;--c:var(--map)"><div class="ic" data-icon="map"></div><div class="role">The ground truth</div><h3>Campus map data</h3><p>Sidewalks, crossings, ramps, stairs and entrances, mapped by our team and checked on foot.</p></div>
+  <!-- 3 · PROBLEM -->
+  <section class="slide s-problem" data-accent="#e8457a" data-accent2="#4f46e5" data-section="Problem"
+    data-notes="Frame the problem around blind and low-vision people in everyday settings, including travel to work, shops, appointments and public services. Sidewalk obstacles, crossings, changing paths and unfamiliar entrances can create information gaps. Canes, guide dogs and navigation applications provide valuable support, but route directions and immediate surroundings are different kinds of information. The technology gap motivating this project is the need to combine route guidance with timely, accessible information about the path ahead. Do not claim that disability technology has seen no advancement, or that every blind person has the same needs. The intended audience extends beyond students; the initial development and evaluation setting is a selected area of the TSU campus. Wider deployment will require additional mapping and testing. The project aims for hands-free audio and vibration feedback using connected edge devices and supplements existing mobility tools. Sources: SeniorProjectReport.tex, Chapter 1, Introduction and Problem Statement; presenter clarification of the intended audience and initial campus scope.">
+    <div>
+      <div class="kicker rv" style="--i:0">01 · Problem statement</div>
+      <div class="quote rv" style="--i:1">Everyday accessibility <span class="grad">still has gaps</span></div>
+      <p class="lede rv" style="--i:2">Blind and low-vision people need to reach work, shops, appointments and public services. Missing information about the path ahead can make independent travel more difficult.</p>
+    </div>
+    <div class="qs">
+      <div class="q card rv" style="--i:3;--c:var(--map)"><div class="n">1</div><div><h3>Everyday mobility barriers</h3><p>Blocked sidewalks, street crossings, uneven surfaces and unfamiliar entrances can make a journey difficult to follow.</p></div></div>
+      <div class="q card rv" style="--i:4;--c:var(--guide)"><div class="n">2</div><div><h3>The technology gap</h3><p>Route directions alone do not describe nearby obstacles or changing conditions. Navigation support needs timely audio or vibration feedback about the surroundings.</p></div></div>
+      <div class="q card rv" style="--i:5;--c:var(--recog)"><div class="n">3</div><div><h3>Broad need, campus first</h3><p>Argus aims to support blind and low-vision people in everyday travel. TSU campus is our initial setting to develop and test the system before wider use.</p></div></div>
     </div>
   </section>
 
-  <!-- 4 · PROBLEM -->
-  <section class="slide s-problem" data-accent="#e8457a" data-accent2="#4f46e5" data-section="Problem"
-    data-notes="A route on a map is not enough. Our users need to reach the right entrance, hear a turn before they reach it, and know what happens if they drift off the path. GPS near buildings is often inaccurate, so the system must handle uncertainty honestly.">
-    <div>
-      <div class="kicker rv" style="--i:0">02 · Problem statement</div>
-      <div class="quote rv" style="--i:1">“How do I know I'm on the <span class="grad">right path?</span>”</div>
-      <p class="lede rv" style="--i:2">Mainstream navigation apps assume you can look at the screen. Near buildings, GPS readings also drift, often right where decisions happen.</p>
-    </div>
-    <div class="qs">
-      <div class="q card rv" style="--i:3;--c:var(--map)"><div class="n">1</div><div><h3>Which entrance?</h3><p>A building is not a destination. A usable, accessible door is.</p></div></div>
-      <div class="q card rv" style="--i:4;--c:var(--guide)"><div class="n">2</div><div><h3>When do I turn?</h3><p>The instruction has to come <em>before</em> the decision point.</p></div></div>
-      <div class="q card rv" style="--i:5;--c:var(--recog)"><div class="n">3</div><div><h3>What if I drift off?</h3><p>Detect the departure, then recover, or say so if location is unreliable.</p></div></div>
+  <!-- 4 · SOLUTION -->
+  <section class="slide" data-accent="#0284c7" data-accent2="#16a34a" data-section="Solution"
+    data-notes="Start with why this matters: getting to class, work and campus services is part of independent daily life. Then explain the challenges. A campus combines sidewalks, crossings, ramps, stairs and multiple building entrances. Conditions change as construction, crowds or objects block paths. A route toward a building does not by itself describe what is directly ahead. This slide follows the problem statement and precedes the project goal and objectives. Source: SeniorProjectReport.tex, Chapter 1, Introduction.">
+    <div class="kicker rv" style="--i:0">02 · Solution</div>
+    <h1 class="title rv" style="--i:1">Why campus navigation <span class="grad">matters</span></h1>
+    <p class="lede rv" style="--i:2">Reaching classes, work and campus services supports independence. Blind and low-vision pedestrians need usable routes and information about the surroundings ahead.</p>
+    <div class="trio">
+      <div class="card rv" style="--i:3;--c:var(--pos)"><div class="ic" data-icon="access"></div><div class="role">Why it matters</div><h3>Independent travel</h3><p>Getting between campus locations is part of everyday life. Navigation support can help people reach the places they need to go.</p></div>
+      <div class="card rv" style="--i:4;--c:var(--glass)"><div class="ic" data-icon="route"></div><div class="role">The campus challenge</div><h3>Complex walking routes</h3><p>Sidewalks, crossings, ramps, stairs and multiple entrances require decisions that a route to a building may not explain.</p></div>
+      <div class="card rv" style="--i:5;--c:var(--map)"><div class="ic" data-icon="map"></div><div class="role">The changing environment</div><h3>Conditions change</h3><p>Construction, crowds, uneven surfaces and objects blocking a path can change a journey even when the mapped route stays the same.</p></div>
     </div>
   </section>
 
   <!-- 5 · GOAL -->
   <section class="slide" data-accent="#9333ea" data-accent2="#0284c7" data-section="Goal & Objectives"
-    data-notes="Our goal in one sentence, then four objectives that map directly onto the subsystems you'll see in the design: prepare the map, guide the walk, add wearable context, and evaluate.">
+    data-notes="Source: SeniorProjectReport.tex, Chapter 1, Research Goal and Associated Objectives, items 1–8. The four groups on this slide summarize all eight report objectives. Map: identify sidewalks and accessible entrances and build a GUI to mark them over a digital map. Navigation: destination selection, GPS/accelerometer/gyroscope/compass tracking, route planning and recalculation, spoken instructions and distinct vibration patterns for turns, warnings, deviations and arrival. Devices and vision: develop a common hardware access library for selected glasses and compatible edge devices; use Bluetooth to exchange sensor data, device status and navigation information; recognize selected landmarks and navigation objects using cameras and computer vision. The report aims to reduce dependence on one phone or operating system; the current implementation targets iPhone. Evaluation: measure and debug position accuracy, route completion, wrong turns, deviation, recognition accuracy, Bluetooth communication and response time. These are project objectives, not completed results. Optional smartwatch support follows Chapter 2, R9.">
     <div class="kicker rv" style="--i:0">03 · Goal &amp; objectives</div>
     <h1 class="title rv" style="--i:1">What we are <span class="grad">building</span></h1>
     <div class="goal card rv" style="--i:2"><span class="lab">GOAL</span>Build an accessible navigation system that combines <b>campus route data</b>, <b>phone sensors</b> and <b>wearable context</b> to guide blind and low-vision pedestrians between locations on the TSU campus.</div>
     <div class="objs">
-      <div class="obj card rv" style="--i:3;--c:var(--map)"><div class="k">01 · MAP</div><h3>Prepare campus data</h3><p>Map selected routes, entrances and accessibility features. Check them on foot.</p></div>
-      <div class="obj card rv" style="--i:4;--c:var(--guide)"><div class="k">02 · GUIDE</div><h3>Guide the journey</h3><p>Plan accessible routes, announce turns early, and recover from deviations.</p></div>
-      <div class="obj card rv" style="--i:5;--c:var(--glass)"><div class="k">03 · CONNECT</div><h3>Add context</h3><p>Use supported glasses features and recognize selected landmarks.</p></div>
-      <div class="obj card rv" style="--i:6;--c:var(--test)"><div class="k">04 · EVALUATE</div><h3>Prove it works</h3><p>Record and replay walks, run supervised trials, and review accessibility.</p></div>
+      <div class="obj card rv" style="--i:3;--c:var(--map)"><div class="k">01 · CAMPUS MAPPING</div><h3>Mapping Campus Paths</h3><p>Identify TSU sidewalks and accessible entrances. Build a map-based GUI to mark their locations.</p></div>
+      <div class="obj card rv" style="--i:4;--c:var(--guide)"><div class="k">02 · NAVIGATION APP</div><h3>Route Planning</h3><p>Select destinations; track GPS, compass and motion. Recalculate after deviations. Speak instructions and provide distinct vibrations for turns, warnings and arrival.</p></div>
+      <div class="obj card rv" style="--i:5;--c:var(--glass)"><div class="k">03 · DEVICES &amp; VISION</div><h3>Device Integration</h3><p>Build a hardware access library and Bluetooth links for sensor data and device status. Use camera models to recognize campus landmarks and objects.</p></div>
+      <div class="obj card rv" style="--i:6;--c:var(--test)"><div class="k">04 · CAMPUS TESTING</div><h3>Navigation Testing</h3><p>Test position accuracy, route completion, wrong turns and deviations. Measure recognition accuracy, Bluetooth communication and system response time.</p></div>
     </div>
   </section>
 
@@ -141,20 +141,7 @@
     </div>
   </section>
 
-  <!-- 7 · NON-FUNCTIONAL -->
-  <section class="slide" data-accent="#0d9488" data-accent2="#fe5c8d" data-section="Requirements"
-    data-notes="Four qualities, each with the evidence we'll collect. These are acceptance checks we plan to run, not results we are claiming yet.">
-    <div class="kicker rv" style="--i:0">04 · Non-functional requirements</div>
-    <h1 class="title rv" style="--i:1">Quality we can <span class="grad">measure</span></h1>
-    <div class="nfr">
-      <div class="card rv" style="--i:2;--c:var(--guide)"><div class="ic" data-icon="access"></div><div><h3>Accessible by default</h3><p>A full journey works with VoiceOver and supported voice commands.</p><div class="ev">EVIDENCE · task completion, focus order</div></div></div>
-      <div class="card rv" style="--i:3;--c:var(--pos)"><div class="ic" data-icon="clock"></div><div><h3>Timely &amp; clear</h3><p>Instructions arrive early enough to act on before the decision point.</p><div class="ev">EVIDENCE · cue timestamps vs. distance to turn</div></div></div>
-      <div class="card rv" style="--i:4;--c:var(--recog)"><div class="ic" data-icon="shield"></div><div><h3>Fails safely</h3><p>Unreliable location, no route or a dropped wearable is announced, never hidden.</p><div class="ev">EVIDENCE · controlled failure scenarios</div></div></div>
-      <div class="card rv" style="--i:5;--c:var(--test)"><div class="ic" data-icon="db"></div><div><h3>Reproducible</h3><p>Every decision can be replayed from saved inputs, and users control their recordings.</p><div class="ev">EVIDENCE · versioned replay fixtures</div></div></div>
-    </div>
-  </section>
-
-  <!-- 8 · ARCHITECTURE -->
+  <!-- 7 · ARCHITECTURE -->
   <section class="slide s-arch" id="arch" data-steps="6" data-accent="#4f46e5" data-accent2="#0d9488" data-section="Design · Architecture"
     data-notes="Build this one step at a time. Step 1: preparation on the laptop. Step 2: sensing and planning on the phone. Step 3: guidance. Step 4: wearables. Step 5: testing and replay. Step 6: the whole picture. Point out that every arrow is a defined interface. You can click any subsystem to jump to its detail slide.">
     <div class="arch-head">
@@ -167,20 +154,20 @@
     <div class="arch-cap card rv" style="--i:4"></div>
   </section>
 
-  <!-- 9 · DESIGN DECISIONS -->
+  <!-- 8 · DESIGN DECISIONS -->
   <section class="slide" data-accent="#16a34a" data-accent2="#4f46e5" data-section="Design · Architecture"
     data-notes="Why this organization? Four decisions. The phone owns processing. Heavy preparation happens offline. When uncertain, we tell the user instead of guessing. Replay is built into the architecture, so navigation logic can be tested without walking.">
     <div class="kicker rv" style="--i:0">05 · Architecture decisions</div>
     <h1 class="title rv" style="--i:1">Why it's <span class="grad">organized this way</span></h1>
     <div class="dec">
       <div class="card rv" style="--i:2;--c:var(--pos)"><div class="n">01</div><h3>The <em>iPhone</em> does the thinking</h3><p>Positioning, routing and guidance run on the phone. Glasses and watch are extra ways to interact, so navigation never depends on them.</p></div>
-      <div class="card rv" style="--i:3;--c:var(--map)"><div class="n">02</div><h3>Prepare <em>offline</em>, run on device</h3><p>Mapping and model training happen on the team laptop before deployment. Nothing is trained while someone is walking.</p></div>
+      <div class="card rv" style="--i:3;--c:var(--map)"><div class="n">02</div><h3>Prepare <em>offline</em>, run on device</h3><p>Campus data is prepared before deployment. Model training and glasses integration remain planned Semester 2 work.</p></div>
       <div class="card rv" style="--i:4;--c:var(--recog)"><div class="n">03</div><h3>Fail <em>safely</em>, not silently</h3><p>If location is unreliable or no accessible route exists, the user is told, instead of getting directions that may be wrong.</p></div>
-      <div class="card rv" style="--i:5;--c:var(--test)"><div class="n">04</div><h3><em>Replayable</em> by design</h3><p>Recorded readings enter Positioning exactly like live ones, so every subsystem can be developed and tested on its own.</p></div>
+      <div class="card rv" style="--i:5;--c:var(--test)"><div class="n">04</div><h3><em>Replayable</em> by design</h3><p>Live, simulation and replay use NavigationSession. Replay uses sensor timestamps; live mode also checks callback age and stale updates.</p></div>
     </div>
   </section>
 
-  <!-- 10 · SUBSYSTEM INDEX -->
+  <!-- 9 · SUBSYSTEM INDEX -->
   <section class="slide" id="subidx" data-accent="#9333ea" data-accent2="#fe5c8d" data-section="Design · Detailed"
     data-notes="Detailed design goes one level below the architecture. Each subsystem has numbered components in the order data moves: inputs on the left, outputs on the right.">
     <div class="kicker rv" style="--i:0">05 · Detailed design</div>
@@ -189,7 +176,7 @@
     <div class="idx-flow rv" style="--i:12"><span>Each slide reads</span><b>inputs</b><span>→</span><b>numbered components, in data order</b><span>→</span><b>outputs</b></div>
   </section>
 
-  <!-- 11–18 · SUBSYSTEMS (rendered by app.js) -->
+  <!-- 10–17 · SUBSYSTEMS (rendered by app.js) -->
   <section class="slide s-sub" data-sub="map"></section>
   <section class="slide s-sub" data-sub="train"></section>
   <section class="slide s-sub" data-sub="pos"></section>
@@ -199,38 +186,41 @@
   <section class="slide s-sub" data-sub="glass"></section>
   <section class="slide s-sub" data-sub="test"></section>
 
-  <!-- 19 · PRELIMINARY WORK -->
+  <!-- 18 · PRELIMINARY WORK -->
   <section class="slide" data-accent="#ca8a04" data-accent2="#0284c7" data-section="Status"
-    data-notes="What runs today, captured from the iPhone simulator. Home: voice destination and walking-route preview. Simulate: turn cues and deviations from scripted movement. Record: captures GPS and sensors for replay. Full native live guidance is the next milestone.">
-    <div class="kicker rv" style="--i:0">06 · Preliminary work</div>
+    data-notes="What runs today, captured from the iPhone simulator. Home: voice destination and walking-route preview. Simulate: turn cues and deviations from scripted movement. Record: captures GPS and sensors for replay. Home now starts native live guidance on the reviewed Boyd-to-library route. Latest build still needs a supervised outdoor test.">
+    <div class="kicker rv" style="--i:0">06 · Implementation status · November 17, 2026</div>
     <h1 class="title rv" style="--i:1">What runs <span class="grad">today</span></h1>
     <div class="phones">
-      <div class="ph rv" style="--i:2;--c:var(--guide)"><div class="frame"><img src="../assets/app-home.png" alt="Argus Home screen"></div><div><div class="badge">IMPLEMENTED</div><h3>Home</h3><p>Voice destination input and a walking-route preview.</p><ul><li>Speak a destination</li><li>Preview the route</li></ul></div></div>
+      <div class="ph rv" style="--i:2;--c:var(--guide)"><div class="frame"><img src="../assets/app-guidance.png" alt="Argus Home screen"></div><div><div class="badge">IMPLEMENTED</div><h3>Home</h3><p>Live positioning and guidance on the walk-reviewed Boyd–library route.</p><ul><li>Warns about Boyd stairs</li><li>Updated library endpoint</li></ul></div></div>
       <div class="ph rv" style="--i:3;--c:var(--route)"><div class="frame"><img src="../assets/app-simulate.png" alt="Argus Simulate screen"></div><div><div class="badge">SCRIPTED INPUTS</div><h3>Simulate</h3><p>Turn cues and route deviation driven by repeatable movement.</p><ul><li>3 scenarios</li><li>Spoken cues</li></ul></div></div>
       <div class="ph rv" style="--i:4;--c:var(--test)"><div class="frame"><img src="../assets/app-record.png" alt="Argus Record screen"></div><div><div class="badge">IMPLEMENTED</div><h3>Record</h3><p>Captures GPS, accuracy, sensors and manual marks.</p><ul><li>Save &amp; export</li><li>Replay a walk</li></ul></div></div>
     </div>
-    <div class="foot rv fade" style="--i:6">Screens captured from the Argus iPhone simulator build · SwiftUI + MapKit · not a field-validated result</div>
+    <div class="foot rv fade" style="--i:6">Simulator screenshots · Home updated; Record and Simulate illustrate existing tools · outdoor live completion remains unvalidated</div>
   </section>
 
-  <!-- 20 · TIMELINE -->
+
+
+
+  <!-- 19 · TIMELINE -->
   <section class="slide" data-accent="#16a34a" data-accent2="#ca8a04" data-section="Next steps"
-    data-notes="Proposed schedule through May 2027. Each phase ends with a gate, which is evidence we must have before moving on. This is for advisor review, not a fixed commitment.">
+    data-notes="Finished-product scope comes from Chapter 2 of SeniorProjectReport.tex, requirements R1–R13; the dates remain a proposed schedule. R1: map 3–5 routes, 200–600 m each, including crossings, ramps or stairs, a bus stop and a sharp turn; a second person checks every route. Record nodes, edges, entrances and landmarks as documented GeoJSON. Collect at least 100 photos per recognition class, with no more than 10 classes. R3–R6: accessible destination entry, GPS/heading/motion tracking with uncertainty alerts, accessible graph routing, avoid-stairs selection, rerouting, spoken instructions and distinct vibration patterns. R7–R8: supported glasses camera, microphone and speaker, connection monitoring and automatic phone fallback; train and convert a model to Core ML, check detections against nearby mapped landmarks and evaluate accuracy and speed. R9: Apple Watch support is optional. R10–R12: repeatable replay tests, then supervised daylight walks with a sighted companion; record position error, completion, wrong turns, recovery time, cue timing and recognition accuracy; test VoiceOver, voice-only interaction and vibration patterns. R13: deliver app source and build instructions, campus dataset, image dataset and trained model, sensor logs, replay files, supervised results, user and technical guides, and documented privacy practices and limitations. A person outside the team must build and operate it using the documentation alone.">
     <div class="kicker rv" style="--i:0">06 · Future work</div>
     <h1 class="title rv" style="--i:1">From prototype to a <span class="grad">tested journey</span></h1>
     <div class="tl">
       <div class="bar"></div>
-      <div class="ph2 rv" style="--i:2;--c:var(--map)"><span class="now">WE ARE HERE</span><div class="when">NOV–DEC 2026</div><h3>Verify the data</h3><p>Walk the study routes. Record entrances, stairs and alternatives.</p><div class="gate"><b>Gate</b> · graph checked by a second walker</div></div>
-      <div class="ph2 rv" style="--i:3;--c:var(--route)"><div class="when">JAN–FEB 2027</div><h3>Unify guidance</h3><p>One session for live and replayed inputs, routing and recovery.</p><div class="gate"><b>Gate</b> · one supervised route + a wrong-turn case</div></div>
-      <div class="ph2 rv" style="--i:4;--c:var(--glass)"><div class="when">MAR 2027</div><h3>Connect &amp; recognize</h3><p>Confirm glasses features. Train and test a small landmark model.</p><div class="gate"><b>Gate</b> · measured accuracy, latency, fallback</div></div>
-      <div class="ph2 rv" style="--i:5;--c:var(--guide)"><div class="when">APR 2027</div><h3>Evaluate</h3><p>Accessibility, cue timing, route completion and failure cases.</p><div class="gate"><b>Gate</b> · supervised results with counts</div></div>
-      <div class="ph2 rv" style="--i:6;--c:var(--test)"><div class="when">MAY 2027</div><h3>Deliver</h3><p>Software, route data, replay fixtures, results and guides.</p><div class="gate"><b>Gate</b> · someone else can reproduce the demo</div></div>
+      <div class="ph2 rv" style="--i:2;--c:var(--map)"><span class="now">WE ARE HERE</span><div class="when">NOV–DEC 2026</div><h3>3–5 mapped routes</h3><p>Survey paths, crossings, ramps, stairs and accessible entrances.</p><div class="gate"><b>Gate</b> · GeoJSON dataset checked by a second walker</div></div>
+      <div class="ph2 rv" style="--i:3;--c:var(--route)"><div class="when">JAN–FEB 2027</div><h3>Validate live guidance</h3><p>Calibrate route geometry and cue timing; test deviation, recovery and arrival.</p><div class="gate"><b>Gate</b> · route, deviation, recovery and arrival work live</div></div>
+      <div class="ph2 rv" style="--i:4;--c:var(--glass)"><div class="when">MAR 2027</div><h3>Glasses &amp; recognition</h3><p>Use camera, mic and audio; recognize mapped landmarks on the phone.</p><div class="gate"><b>Gate</b> · Core ML model + automatic iPhone fallback</div></div>
+      <div class="ph2 rv" style="--i:5;--c:var(--guide)"><div class="when">APR 2027</div><h3>Trials &amp; accessibility</h3><p>Replay tests, then supervised walks; test VoiceOver, voice and vibration.</p><div class="gate"><b>Gate</b> · report position error, completion, recovery and cue timing</div></div>
+      <div class="ph2 rv" style="--i:6;--c:var(--test)"><div class="when">MAY 2027</div><h3>Final product</h3><p>Deliver app, campus data, model, replay logs, trial results and guides.</p><div class="gate"><b>Gate</b> · non-team member builds and runs it from the guide</div></div>
     </div>
-    <div class="foot rv fade" style="--i:8">Proposed schedule for advisor review · field access and confirmed device capabilities are dependencies</div>
+    <div class="foot rv fade" style="--i:8">Finished-product scope: report Ch. 2, R1–R13 · dates proposed · Apple Watch optional · glasses features depend on SDK support</div>
   </section>
 
-  <!-- 21 · CLOSING -->
+  <!-- 20 · CLOSING -->
   <section class="slide s-end" data-accent="#fe5c8d" data-accent2="#4f46e5" data-section="Questions"
-    data-notes="Close with the three pillars, thank Dr. Sekmen, and open for questions. The architecture slide is a good one to return to during Q&A. Press G to jump there.">
+    data-notes="Close with the three pillars, acknowledge Dr. Ali Sekmen as our advisor and professor and Dr. Rogers as our Department Head, and open for questions. The architecture slide is a good one to return to during Q&A. Press G to jump there.">
     <div class="orbit">
       <i style="--c:var(--map);--r:520px;--t:40s;--dl:0s"></i><i style="--c:var(--route);--r:520px;--t:40s;--dl:-5s"></i>
       <i style="--c:var(--train);--r:520px;--t:40s;--dl:-10s"></i><i style="--c:var(--recog);--r:520px;--t:40s;--dl:-15s"></i>
@@ -240,11 +230,15 @@
     <div class="kicker rv" style="--i:0">Thank you</div>
     <div class="big rv" style="--i:1"><span class="grad">Questions?</span></div>
     <div class="pillars">
-      <span class="rv pop" style="--i:3;--c:var(--map)">Verified campus data</span>
+      <span class="rv pop" style="--i:3;--c:var(--map)">Campus data with evidence</span>
       <span class="rv pop" style="--i:4;--c:var(--guide)">Guidance you can hear</span>
       <span class="rv pop" style="--i:5;--c:var(--test)">Evidence you can replay</span>
     </div>
-    <p class="lede rv" style="--i:6;margin-top:56px">Edmund Afunyah · Sydney Apenteng<br><span style="font-size:22px">Advisor &amp; Instructor: Dr. Ali Sekmen · Tennessee State University</span></p>
+    <p class="lede rv" style="--i:6;margin-top:40px">Edmund Afunyah · Sydney Apenteng</p>
+    <div class="rv" style="--i:7;margin-top:30px">
+      <div class="kicker" style="margin-bottom:12px">Acknowledgements</div>
+      <p style="font-size:26px;line-height:1.7;color:var(--muted)">Dr. Ali Sekmen · Advisor &amp; Professor<br>Dr. Rogers · Department Head</p>
+    </div>
   </section>
 
   <div id="progress"></div>

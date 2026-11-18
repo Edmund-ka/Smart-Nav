@@ -1,0 +1,12 @@
+{
+  "source": "User confirmation in project chat",
+  "visitDate": "2026-11-16",
+  "startedAboveBoydStairs": true,
+  "descendedBoydStairs": true,
+  "turnDirections": [
+    "right",
+    "right"
+  ],
+  "libraryDoorSwitchTest": "User reports pressing the automatic-door button and it worked",
+  "independentSurvey": false
+}

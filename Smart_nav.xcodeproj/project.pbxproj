@@ -6,13 +6,7 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		B0AD00000000000000000002 = {isa = PBXBuildFile; fileRef = B0AD00000000000000000001; };
-		0522FFC7306DD49100317139 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = 0522FFC6306DD49100317139 /* MapLibre */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		B0AD00000000000000000001 = {isa = PBXFileReference; lastKnownFileType = text.json; path = DemoData/boyd_to_library/boyd_to_library.geojson; sourceTree = "<group>"; };
 		05BD5E70305B69BB0097672F /* Argus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Argus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -29,7 +23,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0522FFC7306DD49100317139 /* MapLibre in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +32,6 @@
 		05BD5E67305B69BB0097672F = {
 			isa = PBXGroup;
 			children = (
-		B0AD00000000000000000001,
 				05BD5E72305B69BB0097672F /* Argus */,
 				05BD5E71305B69BB0097672F /* Products */,
 			);
@@ -73,7 +65,6 @@
 			);
 			name = Smart_nav;
 			packageProductDependencies = (
-				0522FFC6306DD49100317139 /* MapLibre */,
 			);
 			productName = Smart_nav;
 			productReference = 05BD5E70305B69BB0097672F /* Argus.app */;
@@ -104,7 +95,6 @@
 			mainGroup = 05BD5E67305B69BB0097672F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				0522FFC5306DD49100317139 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 05BD5E71305B69BB0097672F /* Products */;
@@ -121,7 +111,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-		B0AD00000000000000000002,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +257,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Argus;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Argus uses location to demonstrate GPS coordinates and speed.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Argus uses your location to guide you along campus routes, show sensor readings, and record walks you choose to save.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Argus listens when you tap the voice Search control to select a campus destination.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Argus uses motion sensors to demonstrate movement, rotation, and device orientation.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Argus recognizes the destination you say. Audio may be processed by Apple speech recognition.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,8 +294,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Argus;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Argus uses location to demonstrate GPS coordinates and speed.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Argus uses your location to guide you along campus routes, show sensor readings, and record walks you choose to save.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Argus listens when you tap the voice Search control to select a campus destination.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Argus uses motion sensors to demonstrate movement, rotation, and device orientation.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Argus recognizes the destination you say. Audio may be processed by Apple speech recognition.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -349,25 +342,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0522FFC5306DD49100317139 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.31.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0522FFC6306DD49100317139 /* MapLibre */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0522FFC5306DD49100317139 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
-			productName = MapLibre;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 05BD5E68305B69BB0097672F /* Project object */;
 }

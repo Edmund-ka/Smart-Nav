@@ -1,0 +1,1010 @@
+% TSU COMPUTER SCIENCE MASTER THESIS TEMPLATE
+% DR. ALI SEKMEN
+
+
+\documentclass[12pt,letterpaper,oneside,reqno]{book}
+\usepackage[utf8]{inputenc}
+
+% SOME PACKAGES
+\usepackage[letterpaper,hmargin={1in},vmargin=1in,foot=0.5in]{geometry}
+%\usepackage[top=1.5in, bottom=1in, left=1in, right=1in,foot=0.5in]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx} 
+\usepackage{epstopdf }
+\usepackage[english]{babel}
+\usepackage{mathrsfs,amssymb}
+\usepackage[matrix,arrow]{xy}
+\usepackage[pdftex]{color}
+\usepackage{mathptmx}
+\usepackage{setspace}
+\usepackage[toc,page]{appendix}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{titlesec}
+\usepackage{float}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=true,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                
+    tabsize=2
+}
+ 
+\lstset{style=mystyle} 
+
+
+\titleformat{\chapter}[display]
+   {\large\filcenter}
+   {\MakeUppercase{\chaptertitlename} \arabic{chapter}}
+   {\baselineskip}
+   {\MakeUppercase}
+\titlespacing{\chapter}{0pt}{-\baselineskip}{\baselineskip}
+\renewcommand\thechapter{\arabic{chapter}}
+
+\titleformat{\section}[block]
+   {\large}
+   {\thesection\ }
+   {\baselineskip}
+   {}
+
+\titleformat{\subsection}[block]
+   {\normalsize\bfseries}
+   {\thesubsection\ }
+   {\baselineskip}
+   {}
+
+\titleformat{\subsubsection}[block]
+    {\normalfont\raggedright\bfseries\itshape}
+   {\thesubsubsection\ }
+   {\baselineskip}
+   {}
+
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+
+\usepackage{titletoc}
+\titlecontents{chapter}[0em]{\addvspace{\baselineskip}}
+              {\hbox to 2.3em{\thecontentslabel.\hfil}\MakeUppercase}{\MakeUppercase}
+              {\titlerule*[.7pc]{.}\contentspage}{}
+\dottedcontents{section}[4.6em]
+   {\edef\lab{\thecontentslabel}\ex\ex\ex\if1\ex\eatuntildot\lab\addvspace{\baselineskip}\fi}
+   {2.3em}{.7pc}
+
+\def\eatuntildot#1.{}
+\let\ex=\expandafter
+
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}%
+    {Table of contents}%
+}
+
+% BIBLIOGRAPHY 
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+\bibliography{references}
+
+
+% HEADINGS
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\fancyplain{\thepage}{\thepage}}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% SOME DEFINITIONS
+\theoremstyle{plain}    
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+\theoremstyle{plain}    
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples} 
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{plain}    
+\newtheorem{lemma}[theorem]{Lemma} 
+\newtheorem{statement}[theorem]{Statement}
+\theoremstyle{definition}
+\theoremstyle{plain}    
+\newtheorem{corollary}[theorem]{Corollary} 
+\newtheorem{prob}{Problem}
+
+% USER DEFINED COMMANDS
+\newcommand{\WS}{generic}
+\newcommand{\hyp}{Null Space }
+\newcommand*{\threeemdash}{\rule[0.5ex]{17em}{1.5pt}}
+\newcommand*{\xdash}[1][3em]{\rule[0.5ex]{#1}{0.55pt}}
+% ========================================
+% FORMATTING FOR FUNCTIONAL REQUIREMENTS
+% ========================================
+
+% LEVEL 1: Main requirements (1., 2., 3.)
+\newcommand{\mainreq}[2]{%
+    \par\medskip
+    \noindent
+    \hangindent=1cm
+    \hangafter=1
+    \makebox[1cm][l]{\textbf{#1}}%
+    \textbf{#2}\par
+}
+
+% Description below each main requirement
+\newcommand{\reqdesc}[1]{%
+    \par\noindent
+    \leftskip=1cm
+    #1\par
+    \leftskip=0pt
+}
+
+% LEVEL 2: Sub-requirements (1.1., 1.2.)
+\newcommand{\reqleveltwo}[2]{%
+    \par\smallskip
+    \noindent
+    \hangindent=2cm
+    \hangafter=1
+    \hspace*{0.5cm}%
+    \makebox[1.5cm][l]{\textbf{#1}}%
+    \textbf{#2}\par
+}
+
+% LEVEL 3: Detailed requirements (1.1.1.)
+\newcommand{\subreq}[2]{%
+    \par\noindent
+    \hangindent=3cm
+    \hangafter=1
+    \hspace*{1cm}%
+    \makebox[2cm][l]{\textbf{#1}}%
+    #2\par
+}
+
+\begin{document}
+
+%% adding a line with "page" to table of contents
+\addtocontents{toc}{\vskip\baselineskip\hfill Page\par}
+
+\frontmatter
+
+%%%%%%%% Titlepage
+
+\thispagestyle{empty}
+\doublespacing
+\begin{center}
+
+\large SMART-EDGE ACCESSIBLE CAMPUS NAVIGATION SYSTEM FOR
+BLIND OR LOW-VISION PEDESTRIANS\\
+\vspace{4cm}
+%\xdash[10em]\\
+A SENIOR PROJECT\\
+SUBMITTED TO THE COLLEGE OF ENGINEERING\\
+OF TENNESSEE STATE UNIVERSITY\\
+%\xdash[10em]\\
+IN PARTIAL FULFILLMENT OF THE REQUIREMENTS\\
+FOR THE DEGREE OF \\
+BACHELOR OF SCIENCE IN COMPUTER SCIENCE\\
+%\xdash[10em]\\ 
+\vspace{6cm}
+EDMUND AFUNYAH AND SYDNEY APENTENG\\
+May 2027\\ 
+%\ \\ 
+%\normalsize
+%\ \\
+%Keywords: Deep learning, subspace separation, deep convolutional networks. 
+\end{center}
+
+\hspace{1cm} 
+
+
+\newpage
+\noindent To the College of Engineering,
+
+\indent We are submitting a senior project by "Edmund Afunyah, Sydney Apenteng" entitled "Smart-Edge accessible campus navigation system for blind or low-vision pedestrians". We recommend that it be accepted in partial fulfillment of the requirements for the degree, Bachelor of Science in Computer Science.\\ \\
+
+\hspace{8cm} \threeemdash \vspace{-0.4cm} \\
+\indent \hspace{8cm} Technical Advisor, Dr. Tamara Rogers\\ 
+\vspace{0.3cm}
+
+\hspace{8cm} \threeemdash \vspace{-0.4cm} \\
+\indent \hspace{8cm} Course Instructor, Dr. Ali Sekmen\\
+\vspace{0.3cm}
+
+\hspace{8cm} \threeemdash \vspace{-0.4cm} \\
+\indent \hspace{8cm} Department Chair, Dr. Ali Sekmen\\
+
+\vspace{2cm}
+Accepted for the College of Engineering:\\
+\indent  Lin Li, Ph.D. \vspace{0.3cm}\\ \\
+\indent \threeemdash \vspace{-0.4cm} \\
+\indent Dean of the College of Engineering
+
+\newpage
+\singlespacing
+\thispagestyle{empty}
+\vspace*{4.5in}
+\centerline{Copyright {\small\copyright}\ 2027 by Edmund Afunyah and Sydney Apenteng}
+\centerline{All Rights Reserved}
+
+%%%%%%%%% Dedication
+\newpage
+\setcounter{page}{2}
+\addcontentsline{toc}{chapter}{Dedication}
+
+\vspace*{3in}
+\centerline{\em To my family and friends,}
+\vspace{18pt}
+\centerline{\em my support system.}
+
+
+%%%%%%%% Abstract
+\newpage
+\doublespacing
+\chapter{Abstract}
+{\color{red}Your abstract goes here. You will add your abstract once you complete your thesis. Here is a sample abstract.}
+
+\textit{This research proposes a new deep convolutional network architecture that improves the feature subspace separation.} In training, the system considers $M$ classes of input sets $\{\mathcal{C}_i\}_{i=1}^{M}$ and $M$ deep convolutional networks $\{DN_i\}_{i=1}^{M}$ whose filter and other parameters are randomly initialized. For each input class $\mathcal{C}_i$, the Convolutional Neural Network ($CNN$) generates a set of features $\mathcal{F}_i$. Then, a local subspace $S_i$ is matched for each set $\mathcal{F}_i$. This is followed with a full training of the deep convolutional network $DN_i$ based on a decision criteria developed with computation of rejections of all features in $\{\mathcal{F}_i\}_{i=1}^{M}$  to   $S_i$. 10 different deep convolutional network topologies are used to show that the proposed technique works better for small network topologies and has close performance to more complex networks.
+
+\textit{This research also suggests that a trained deep network can potentially be used as a generic feature extraction to cluster images that the network cannot inherently identify.} In recent years, many different network topologies have been applied in various areas of science and engineering. Those networks are typically trained with large datasets (e.g. millions of images) that contain diverse classes and categories with distinctive features. Intuitively, if a deep convolutional network is trained with a rich variety of classes, it may have capability to classify data from unknown classes.
+%%%%%%%% Acknowledgments
+\newpage
+\doublespacing
+\chapter{Acknowledgments}
+{\color{red}Your acknowledgement goes here. Here is a sample acknowledgement.}
+
+We would like to thank our advisor, Dr. Ali Sekmen, for providing steadfast support and motivation to assume this work. We thank them for trusting in our abilities, work ethic, and having patience to work with us throughout the project. Without the help of these advisors, this project would not have been able to be accomplished. Thank you for everything you have given us, it is more than appreciated.
+
+This research is supported by DoD Grant W911NF-15-1-0495. I like to acknowledge the support from the Army Research Lab (ARL) and the Air Force Research Lab (AFRL).
+
+% TABLE OF CONTENTS
+\singlespacing
+\tableofcontents
+
+% LIST OF FIGURES
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+% LIST OF TABLES
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+% LIST OF ALGORITHMS
+\listofalgorithms
+\addcontentsline{toc}{chapter}{List of Algorithms}
+
+% LIST OF LISTINGS
+\lstlistoflistings
+\addcontentsline{toc}{chapter}{List of Listings}
+
+% SPACING
+\doublespacing
+
+
+\mainmatter
+\addtocontents{toc}{\vskip\baselineskip\noindent Chapter\par}
+
+% CHAPTERS BEGING HERE
+
+% CHAPTER
+\chapter{Introduction}
+This chapter introduces our Smart-Edge Accessible Campus Navigation System for blind or low-vision pedestrians. First, we discuss why this type of system is needed and the problem we want to address. Next, we review related work including current mobility tools, wearable assistive technology, sensors, smart edge device processing, and output methods. Finally, we list the research goal, objectives, and the organization of the rest of the report.
+
+\section{Need Analysis}
+Blind and low-vision pedestrians can face navigation challenges that are not completely addressed by current mobility tools. This is an important problem because vision impairment affects a large number of people. According to the World Health Organization (WHO), at least 2.2 billion people worldwide have a near or distance vision impairment. For at least 1 billion of these people, the vision impairment could have been prevented or is still not addressed \cite{WHO2026}. Safe and independent travel is an important part of daily life, including getting to class, work, appointments, stores, and other public spaces.
+
+College campuses can be especially difficult to navigate because they include sidewalks, stairs, ramps, crosswalks, buildings, parking areas, and crowded walking paths. A route that is clear one day may be different the next day. Construction areas, parked equipment, poles, benches, uneven surfaces, fallen objects, and objects blocking a sidewalk may not appear on existing maps. GPS can help a user travel toward a destination, but it may not provide enough information about an obstacle that is directly in front of the user or a temporary change in the walking path.
+
+Current mobility tools are important, but each tool provides a different type of help. A white cane can help detect nearby obstacles and changes in the walking surface, while a guide dog can help a user follow a safe path and avoid some obstacles. Navigation applications can provide route directions and location information. However, these tools may still leave a gap between general route guidance and information about the user's immediate surroundings. A system that can detect nearby conditions and provide a warning may give the user another useful source of information while still allowing current mobility tools to be used.
+
+Smart edge devices provide a practical way to build this type of system. Instead of depending on one specific phone or device, the system can use devices that are already carried or worn by many users. Smartphones can provide processing, location, motion sensing, audio, vibration, and wireless communication. Smartwatches can also provide motion sensing, vibration, and quick feedback from the wrist. Smart glasses can place sensors near the user's forward-facing direction while keeping the user's hands free. These devices can share information through wireless communication so that different parts of the system can work together.
+
+Our project will study how smart glasses, smartphones, smartwatches, and other compatible edge devices can be combined to support accessible navigation. Sensors on the glasses or another wearable device can collect information about nearby obstacles and movement. That information can be sent to a smart edge device through Bluetooth for processing and feedback. The goal is not to replace canes, guide dogs, or existing navigation applications. Instead, we want to add another layer of information about the user's immediate surroundings and build the system in a way that does not depend on one specific device or platform.
+
+\section{Problem Statement}
+Blind and low-vision pedestrians moving around college campuses can face mobility problems because existing infrastructure and mapping tools may not include detailed information about sidewalks, temporary obstacles, and campus-specific landmarks. Current mobility solutions such as canes and guide dogs are useful, but they also have limitations. For example, the Guide Dog Foundation reports that it costs more than \$50,000 to produce one guide dog team, even though the guide dog and training are provided to qualified clients free of charge \cite{GuideDogFAQ2026}. The same organization reports that, after an applicant is accepted, the average wait before being invited to training is about nine to eighteen months while a suitable dog is matched and trained \cite{GuideDogFoundation2026}.
+
+To address this problem, we plan to develop a Smart-Edge system that uses smart glasses equipped with sensors and communicates with compatible smart edge devices through Bluetooth. Smartphones can provide location, compass, motion, processing, audio, and vibration features, while smartwatches may provide additional motion sensing and haptic feedback. The goal is to build a hands-free and lower-cost prototype that can provide audio or vibration feedback when useful information about the user's surroundings is detected.
+
+\section{Literature Review}
+This section reviews previous research and technologies related to the Smart-Edge project. We discuss current mobility tools, wearable assistive systems, sensors for obstacle detection, smart edge device processing, Bluetooth communication, and accessible feedback methods.
+
+\subsection{Assistive Navigation for Blind and Low-Vision Pedestrians}
+Blind and low-vision pedestrians have used several methods to navigate independently. Examples of common mobility tools include the white cane and guide dog. More recently, GPS-based navigation applications and electronic travel aids have also been developed to provide additional navigation information.
+
+The white cane is one of the most common mobility tools. It allows a user to physically detect obstacles, surface changes, and steps while navigating. It is inexpensive; however, the cane can only detect objects within its physical reach and may provide limited warning for obstacles located above the waist or farther ahead of the user. Hersh reviewed wearable travel aids for blind and partially sighted people and noted that the limitations of the traditional cane have motivated the development of electronic systems capable of extending the user's sensing range \cite{Hersh2022}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/white-cane.jpg}
+    \caption{Example of a white cane.}
+    \label{fig:whitecane}
+\end{figure}
+
+Guide dogs are another important mobility option. A trained guide dog can help a user follow a clear path, avoid obstacles, and stop at changes in elevation such as curbs. However, guide dogs are not immediately available to every person who may want one. The Guide Dog Foundation requires applicants to meet mobility and eligibility requirements, and accepted applicants may wait while the organization finds and trains a suitable match \cite{GuideDogFoundation2026}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/guide-dog.jpg}
+    \caption{Guide dog as an existing mobility solution.}
+    \label{fig:guidedog}
+\end{figure}
+
+GPS has also been used to help blind and low-vision users navigate. It can help determine a user's general location, plan a route, and guide the user toward a destination. However, GPS does not provide the level of accuracy needed for every pedestrian navigation task. El-Taher et al. report that typical GPS accuracy can be around 10--20 meters, which is not precise enough to pinpoint the exact location of a blind or low-vision pedestrian in many situations \cite{ElTaher2021}. This means GPS can help with route guidance, but another sensing method may still be needed to detect objects or changes in the user's immediate path.
+
+\subsection{Wearable Assistive Technology}
+Wearable technology allows the user to attach sensors and devices to their body while leaving the hands free for other mobility tools. Different tools have been built to be mounted on the wrist, waist, chest, shoes, canes, and head. Hersh's review includes several head-mounted and glasses-mounted systems that use cameras, ultrasonic sensors, GPS, and inertial sensors \cite{Hersh2022}.
+
+Smart glasses provide a possible platform for placing navigation sensors near the user's natural forward-facing direction. The user does not need to hold or manually point the device, which allows the system to operate hands-free. This is especially important for a blind pedestrian who may already be using a white cane or guide dog.
+
+Researchers have also developed systems that split the work between wearable hardware and a smart edge device. Gao et al. developed a wearable obstacle-avoidance device that used custom glasses to collect video and depth information. The glasses sent information to a smartphone, and the smartphone performed obstacle detection and helped generate audio and tactile alerts \cite{Gao2025}. This project is useful to our research because it shows that all of the processing does not have to take place directly on the glasses.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/product-image.png}
+    \caption{Example architecture of a wearable obstacle-avoidance system \cite{Gao2025}.}
+    \label{fig:Architecture}
+\end{figure}
+
+For our project, the glasses can collect sensor information while another smart edge device handles more of the processing and feedback. A smartphone may perform the main processing, while a smartwatch may provide vibration feedback or additional motion information. This approach can reduce the amount of hardware that has to be placed directly on the user's head and gives us more flexibility when selecting devices.
+
+\subsection{Sensors for Navigation and Obstacle Detection}
+Assistive navigation systems can use several types of sensors. Each sensor measures something different, so it is important to understand what each one can and cannot provide. Xu et al. reviewed 89 wearable obstacle-avoidance electronic travel aids and found that camera-based and ultrasonic methods were among the most common ways of detecting the surrounding environment \cite{Xu2023}.
+
+Ultrasonic sensors estimate distance using sound waves. The sensor sends out a high-frequency sound and measures how long it takes for the reflected sound to return. Since the speed of sound is known, the system can use the travel time to estimate the distance to an object. Ultrasonic sensors are relatively inexpensive and have been used in many electronic travel aids \cite{Hersh2022,Xu2023}. Their performance can still be affected by the angle, shape, and surface of an object.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/ultrasonic-waves.png}
+    \caption{Example of ultrasonic distance sensing.}
+    \label{fig:ultrasonic}
+\end{figure}
+
+LiDAR, or Light Detection and Ranging, uses light to estimate distance. A LiDAR sensor sends out light and measures the reflected signal to determine how far away an object is. LiDAR has been used in assistive-navigation research together with other technologies such as cameras, ultrasonic sensors, GPS, and Bluetooth \cite{Casanova2025}. LiDAR can provide useful distance measurements, but cost, power use, range, field of view, and environmental conditions still need to be considered when choosing a sensor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/lidar.jpeg}
+    \caption{Example of a LiDAR sensor.}
+    \label{fig:lidar}
+\end{figure}
+
+An Inertial Measurement Unit (IMU) is used to measure motion and orientation. An IMU commonly contains an accelerometer and a gyroscope. The accelerometer measures acceleration along different axes, while the gyroscope measures rotation. A magnetometer can also be used to measure the magnetic field and help estimate direction. These sensors do not directly detect obstacles, but they can provide useful information about how a smartphone, smartwatch, or wearable system is moving.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\textwidth]{images/imu.png}
+    \caption{Example of an inertial measurement unit.}
+    \label{fig:IMU}
+\end{figure}
+
+Many smart edge devices already include motion sensors such as accelerometers and gyroscopes. Some devices also include magnetometers, GPS, barometers, and other sensors. For Smart-Edge, we can test whether motion information from a smartphone, smartwatch, or wearable device adds useful context to the distance measurements collected by sensors on the glasses. Using several sensor sources may also allow the system to continue working when one source is less useful in a particular environment.
+
+\subsection{Smart Edge Device Processing and Bluetooth Communication}
+Modern smart edge devices can include processors, wireless communication hardware, location services, motion sensors, speakers, vibration motors, and accessibility features. Because of this, a smart edge device can perform part of the navigation processing and feedback instead of placing all of the computing hardware on the glasses.
+
+Previous research has used smartphones as part of assistive navigation systems. Murata et al. developed a smartphone-based indoor localization system for blind navigation that used the phone's inertial sensors together with Bluetooth Low Energy beacon signals \cite{Murata2019}. This shows how information from a mobile edge device and nearby wireless devices can be combined for navigation.
+
+For Smart-Edge, sensor measurements from the glasses can be sent to a compatible edge device using Bluetooth Low Energy (BLE). BLE allows nearby devices to exchange small amounts of sensor and status information while using relatively low power. The receiving device can then process the sensor data and decide when feedback should be given to the user. This design also gives the project flexibility because the processing device does not have to be limited to one phone model or operating system.
+
+Audio and vibration are two common ways to provide this feedback. Audio can communicate detailed information such as direction or distance, but too much audio may make it harder for the user to hear important sounds in the environment. Xu et al. found that acoustic feedback was the most common feedback method among the wearable obstacle-avoidance systems included in their review \cite{Xu2023}.
+
+Haptic feedback provides information through touch. For example, different vibration patterns can be used to give directions without taking away the user's hearing. Tachiquin et al. developed a smartphone-based mobility system that sent navigation instructions through vibration patterns in a tactile interface worn on the foot \cite{Tachiquin2021}. Their work shows that a smart edge device can be used for navigation processing while a wearable device provides haptic feedback.
+
+Our project will test a similar overall idea. Smart glasses will collect information, BLE will send the measurements to a compatible smart edge device, and the system will process the data and provide audio, vibration, or a combination of both. A smartphone can support route planning and processing, while a smartwatch may provide additional sensing or haptic feedback. The system is intended to work alongside current mobility tools and provide extra information about the user's immediate surroundings.
+
+\section{Goal and Objectives}
+This section presents the main research goal of the Smart-Edge project and the objectives that will guide its development and testing.
+
+\subsection{Research Goal}
+The goal of this project is to make university campuses more accessible for blind and low-vision pedestrians by developing a smart navigation system that uses connected edge devices, including smart glasses, smartphones, and smartwatches.
+
+\subsection{Associated Objectives}
+\begin{enumerate}
+    \item Develop a hardware access library for selected smart glasses and compatible smart edge devices. The library will provide a common way for the navigation system to access sensor data and device features without depending on one specific phone or operating system.
+
+    \item Identify and map selected campus sidewalks and accessible entrances on the TSU campus. Develop a graphical user interface (GUI) with a digital map in the background to mark those sidewalks and accessible entrances.
+
+    \item Develop a mobile navigation application that enables destination selection and provides route guidance. Combine available location and motion data, such as GPS, accelerometer, gyroscope, and compass information, to monitor direction, movement, and route progress.
+
+    \item Provide spoken instructions and distinct vibration patterns for turns, warnings, route deviation, and arrival. Allow compatible edge devices, including smartphones or smartwatches, to provide feedback when appropriate.
+
+    \item Use available cameras and computer vision models to recognize a selected set of campus landmarks and navigation-related objects.
+
+    \item Develop an algorithm that plans the user's route and recalculates the route when the user moves away from the planned path.
+
+    \item Implement Bluetooth communication between smart glasses, smartphones, smartwatches, and other compatible edge devices to transmit sensor data, device status, and navigation information.
+
+    \item Test and debug location accuracy, route completion, wrong turns, route deviation, landmark-recognition accuracy, Bluetooth communication, and system response time during campus navigation.
+\end{enumerate}
+
+\section{Chapter Designations}
+The remainder of this report is organized as follows. Chapter 2 presents the functional and non-functional requirements of the Smart-Edge system. Chapter 3 describes the system architecture and hardware and software design. Chapter 4 discusses the implementation of the wearable sensors, Bluetooth communication, edge-device processing, and mobile application. Chapter 5 presents the testing procedures and results. Finally, Chapter 6 summarizes the project, discusses its limitations, and gives possible directions for future work.
+
+% CHAPTER
+\chapter{Requirements Analysis}
+
+\par\noindent\begingroup\color{black}\noindent This chapter discusses the requirements analysis for our
+Accessible Campus Navigation System, which aims to assist blind
+and visually impaired individuals in navigating the Tennessee
+State University (TSU) campus safely and independently.
+The chapter outlines the functional requirements necessary
+for the design, development and evaluation including campus accessibility mapping,
+route planning, iPhone sensor integration,
+voice-guided navigation, haptic feedback, and landmark
+recognition. It also addresses the integration of Meta
+smart glasses and optional smartwatch support. These requirements establish the foundation for developing
+a reliable and accessible navigation solution.\par\endgroup
+
+% ==================================================
+% REQUIREMENT 1: CAMPUS ACCESSIBILITY DATASET
+% ==================================================
+
+\section{Functional Requirements}
+
+% Indentation follows the professor's Functional Requirements template.
+% Main numbers start at the margin; descriptions align with main text.
+% Second-level numbers begin under the main text; third-level numbers
+% begin under second-level text.  Wrapped lines align with their own text.
+% Number labels are regular weight; only main requirement text is bold.
+\newlength{\reqMainTextIndent}
+\newlength{\reqSecondIndent}
+\newlength{\reqSecondLabelWidth}
+\newlength{\reqThirdIndent}
+\newlength{\reqThirdLabelWidth}
+\setlength{\reqMainTextIndent}{2.1em}
+\setlength{\reqSecondIndent}{2.1em}
+\setlength{\reqSecondLabelWidth}{3.4em}
+\setlength{\reqThirdIndent}{5.5em}
+\setlength{\reqThirdLabelWidth}{4.3em}
+
+% #1 = left indentation, #2 = label width, #3 = number,
+% #4 = text weight, #5 = requirement statement.
+\newcommand{\campusreqitem}[5]{%
+  \par\smallskip
+  \begingroup
+  \leftskip=#1\relax
+  \parindent=0pt
+  \hangindent=#2\relax\hangafter=1
+  \noindent\makebox[#2][l]{{\normalfont\mdseries #3}}{#4 #5}\par
+  \endgroup
+}
+\def\mainreq#1#2{\campusreqitem{0pt}{\reqMainTextIndent}{#1}{\bfseries}{#2}}
+\def\reqleveltwo#1#2{\campusreqitem{\reqSecondIndent}{\reqSecondLabelWidth}{#1}{\normalfont}{#2}}
+\def\subreq#1#2{\campusreqitem{\reqThirdIndent}{\reqThirdLabelWidth}{#1}{\normalfont}{#2}}
+\renewcommand{\reqdesc}[1]{%
+  \par\begingroup
+  \leftskip=\reqMainTextIndent\relax
+  \parindent=0pt\noindent #1\par
+  \endgroup
+}
+
+\mainreq{1.}{A selected area of the TSU campus will be mapped as an accessible pedestrian-route dataset.}
+
+\reqdesc{The system is only as good as its map. Regular maps show roads, not sidewalks, ramps, stairs or the door a blind person should use. Here you pick a small part of campus, walk it, and record every path, decision point, landmark and accessible entrance with its GPS coordinates and a short spoken description. This dataset is the foundation for the iPhone app, the glasses and all testing.}
+
+\reqleveltwo{1.1.}{A campus study area with a small set of test routes will be selected.}
+
+\subreq{1.1.1.}{The area will contain three to five walking routes between building entrances, for example from the library to the student center, each 200 to 600 meters long.}
+
+\subreq{1.1.2.}{The routes will include at least one street crossing, one ramp or stairs, one bus stop and one sharp turn, so the guidance features can be tested.}
+
+\subreq{1.1.3.}{The area and routes will be drawn on a campus map and approved by the advisor before mapping starts.}
+
+\reqleveltwo{1.2.}{Existing map data for the area will be collected and checked.}
+
+\subreq{1.2.1.}{OpenStreetMap data for the area (footways, crossings, building outlines, entrances) will be downloaded and stored.}
+
+\subreq{1.2.2.}{Available TSU campus maps and accessibility information will be collected.}
+
+\subreq{1.2.3.}{Every downloaded path and entrance will be checked on foot and marked as correct, wrong or missing.}
+
+\reqleveltwo{1.3.}{The pedestrian-route graph will be built by walking the routes with the iPhone.}
+
+\subreq{1.3.1.}{The graph will be made of nodes (decision points such as intersections, crossings, entrances, ramp and stair ends, bus stops) and edges (walkable sidewalk segments between nodes).}
+
+\subreq{1.3.2.}{Each node will be recorded with its latitude and longitude, its type, and a short description written the way it should be spoken, for example the ramp on your left leads to the main entrance.}
+
+\subreq{1.3.3.}{Each edge will be recorded with its length, surface, slope or stairs, width and whether it is accessible for a wheelchair or a person with a cane.}
+
+\subreq{1.3.4.}{Accessible building entrances will be recorded with their door type (automatic, push, pull), whether they are the accessible entrance, and their opening hours if known.}
+
+\reqleveltwo{1.4.}{Campus landmarks and objects for camera recognition will be recorded.}
+
+\subreq{1.4.1.}{A limited list of landmark and object classes will be defined, for example building signs, main doors, stairs, crosswalk markings and bus stop signs, with no more than 10 classes.}
+
+\subreq{1.4.2.}{For each class, at least 100 photos will be taken on campus at different times of day and from the glasses camera height, and stored with the location where they were taken.}
+
+\subreq{1.4.3.}{Photos will not include recognizable faces, and any that do will be deleted or blurred.}
+
+\reqleveltwo{1.5.}{The dataset will be stored in a standard format and documented.}
+
+\subreq{1.5.1.}{Nodes, edges, entrances and landmarks will be saved as GeoJSON files with a written description of every attribute.}
+
+\subreq{1.5.2.}{A data description will list the number of nodes, edges, entrances and landmark photos, the date they were recorded, and known gaps.}
+
+\subreq{1.5.3.}{A second person will walk each route with the dataset and confirm every node and description.}
+
+
+% ==================================================
+% REQUIREMENT 2: ROUTE DATASET IMPORT AND VALIDATION
+% ==================================================
+
+\mainreq{2.}{The route dataset will be loaded into the iPhone app and checked for consistency.}
+
+\reqdesc{The GeoJSON files must become a graph the app can search. Here you write the code that loads the files, connects the edges to the nodes, and checks that every route is connected, every node has a description, and every entrance is reachable. Errors are listed so the mapping team can fix them.}
+
+\reqleveltwo{2.1.}{The application will import and organize the campus accessibility dataset.}
+
+\subreq{2.1.1.}{The application will load GeoJSON files containing pedestrian nodes, sidewalk edges, building entrances, and campus landmarks.}
+
+\subreq{2.1.2.}{Each node and edge will be assigned a unique identifier to establish connections between locations.}
+
+\subreq{2.1.3.}{The application will convert the imported geographic data into a pedestrian-route graph that can be used for navigation.}
+
+\reqleveltwo{2.2.}{The application will validate the accuracy and consistency of the imported dataset.}
+
+\subreq{2.2.1.}{The system will verify that each edge references valid nodes and that each node contains the required geographic coordinates and descriptions.}
+
+\subreq{2.2.2.}{The system will check whether all designated accessible entrances can be reached through the pedestrian-route graph.}
+
+\subreq{2.2.3.}{Missing information, disconnected paths, duplicate identifiers, and invalid coordinates will be recorded in an error report for correction.}
+
+
+% ==================================================
+% REQUIREMENT 3: ACCESSIBLE IPHONE INTERFACE
+% ==================================================
+
+\mainreq{3.}{An accessible iPhone app interface will be built for choosing a destination, hearing the current location and starting guidance.}
+
+\reqdesc{The user cannot see the screen. Every control must work with VoiceOver, with voice input, and with large simple gestures. Here you build the screens for picking a destination from a list or by voice, for asking where am I, for starting and stopping guidance, and for repeating the last instruction. Everything must also be usable while the phone is in a pocket.}
+
+\reqleveltwo{3.1.}{The application will provide accessible destination selection and navigation controls.}
+
+\subreq{3.1.1.}{Users will be able to select a campus destination from a searchable list of mapped buildings and accessible entrances.}
+
+\subreq{3.1.2.}{Users will be able to select destinations and initiate navigation using supported voice commands.}
+
+\reqleveltwo{3.2.}{The application will support nonvisual interaction and accessibility features.}
+
+\subreq{3.2.1.}{All interactive controls will include descriptive Voice over labels and appropriate accessibility hints.}
+
+\subreq{3.2.2.}{Users will be able to request their current location and repeat the most recent navigation instruction using voice commands.}
+
+
+% ==================================================
+% REQUIREMENT 4: IPHONE SENSOR INTEGRATION
+% ==================================================
+
+\mainreq{4.}{The iPhone sensors will be combined to track the user's position, heading and movement along the route.}
+
+\reqdesc{GPS gives a rough position, the compass gives the direction the user faces, and the accelerometer and gyroscope tell whether the user is walking, stopped or turning. Here you read all of them with Core Location and Core Motion, combine them, and snap the position to the nearest edge of the route graph. Position uncertainty must be tracked, because GPS can be off by several meters near buildings.}
+
+\reqleveltwo{4.1.}{The application will collect and process location and motion sensor measurements.}
+
+\subreq{4.1.1.}{The application will use Core Location to retrieve the user's geographic coordinates, location accuracy, and available movement information.}
+
+\subreq{4.1.2.}{The application will use Core Motion to retrieve accelerometer and gyroscope measurements for detecting changes in device movement and rotation.}
+
+\subreq{4.1.3.}{The application will obtain compass heading information and use available motion measurements to estimate the user's direction of travel.}
+
+\reqleveltwo{4.2.}{The application will estimate the user's position relative to the pedestrian-route graph.}
+
+\subreq{4.2.1.}{The system will compare the user's estimated GPS location with nearby pedestrian edges and identify the most likely route segment.}
+
+\subreq{4.2.2.}{The system will use recent location, heading, and motion measurements to improve route tracking and reduce sudden changes caused by GPS inaccuracies.}
+
+\subreq{4.2.3.}{The system will monitor location uncertainty and notify the user when the estimated position is insufficiently reliable for precise navigation instructions.}
+
+
+% ==================================================
+% REQUIREMENT 5: ROUTE PLANNING AND REROUTING
+% ==================================================
+
+\mainreq{5.}{Route planning and rerouting on the pedestrian graph will be implemented.}
+
+\reqdesc{Given the start and the destination, the app finds the best path over the graph, preferring accessible edges and avoiding stairs when the user asks. If the user leaves the route by more than a set distance, the app detects the deviation, warns the user and computes a new route from the current position.}
+
+\reqleveltwo{5.1.}{The application will generate pedestrian routes based on the user's selected destination and accessibility preferences.}
+
+\subreq{5.1.1.}{The system will identify the user's starting location and selected destination using nodes within the campus route graph.}
+
+\subreq{5.1.2.}{The system will calculate a route within walking distance and recorded accessibility attributes.}
+
+\subreq{5.1.3.}{Users will be able to select an option to avoid stairs, and the system will exclude inaccessible edges when generating the route.}
+
+\reqleveltwo{5.2.}{The application will detect route deviations and calculate alternative paths.}
+
+\subreq{5.2.1.}{The system will compare the user's estimated position with the planned route to identify deviations beyond a configurable distance threshold.}
+
+\subreq{5.2.2.}{When a deviation is detected with sufficient location confidence, the system will notify the user through an audio message or vibration.}
+
+\subreq{5.2.3.}{The system will calculate an alternative route from the user's updated position to the original destination when a valid accessible path is available.}
+
+
+% ==================================================
+% REQUIREMENT 6: SPOKEN AND VIBRATION GUIDANCE
+% ==================================================
+
+\mainreq{6.}{Spoken instructions and vibration patterns will be delivered for turns, warnings, route deviation and arrival.}
+
+\reqdesc{This is what the user actually experiences. Short spoken instructions are produced with text-to-speech and played through the glasses or the phone. Distinct vibration patterns on the phone mean turn left, turn right, warning, off route and arrived. Geofences around each node trigger the instruction at the right distance before the decision point, and the user can ask for a repeat at any time.}
+
+\reqleveltwo{6.1.}{The application will generate spoken navigation instructions based on route progress.}
+
+\subreq{6.1.1.}{The application will use Apple's text-to-speech capabilities to announce navigation instructions through the iPhone or connected smart glasses.}
+
+\subreq{6.1.2.}{Spoken instructions will include upcoming turns, street crossings, accessible entrances, route deviations, and destination arrival.}
+
+\subreq{6.1.3.}{The application will use the user's estimated distance from mapped decision points to trigger instructions before the corresponding navigation action.}
+
+\reqleveltwo{6.2.}{The application will provide vibration feedback and instruction repetition.}
+
+\subreq{6.2.1.}{Distinct vibration patterns will be assigned to supported navigation events, including left turns, right turns, warnings, route deviations, and arrival.}
+
+\subreq{6.2.2.}{Users will be able to repeat the most recent spoken instruction through a voice command or accessible application control.}
+
+
+% ==================================================
+% REQUIREMENT 7: META SMART GLASSES INTEGRATION
+% ==================================================
+
+\mainreq{7.}{The Meta smart glasses will be connected to the app as the first-person camera, microphone and speaker.}
+
+\reqdesc{The glasses are the smart edge. They sit on the user's face, so their camera sees what the user faces and their speakers talk without blocking the ears. Here you connect the glasses to the iPhone through Meta's developer toolkit, receive the camera stream and microphone audio in the app, and send spoken output to the glasses. The phone does the computing. If the glasses are not connected, the app must fall back to the phone camera, microphone and speaker automatically.}
+
+\reqleveltwo{7.1.}{The application will establish and maintain communication with compatible Meta smart glasses.}
+
+\subreq{7.1.1.}{The application will use Meta's supported developer toolkit to discover, connect to, and communicate with compatible smart glasses.}
+
+\subreq{7.1.2.}{The system will receive supported camera frames and microphone input from the connected glasses, subject to device permissions and SDK capabilities.}
+
+\subreq{7.1.3.}{The application will monitor connection status and notify the user when the glasses connect, disconnect, or become unavailable.}
+
+\reqleveltwo{7.2.}{The application will support audio output and alternative input devices.}
+
+\subreq{7.2.1.}{The system will deliver spoken navigation instructions through the connected glasses using supported iOS audio routing.}
+
+\subreq{7.2.2.}{If the glasses disconnect, the application will switch to supported iPhone microphone, camera, and speaker functions when available and authorized.}
+
+\subreq{7.2.3.}{The system will allow users to continue essential navigation functions without requiring the smart glasses to remain connected.}
+
+
+% ==================================================
+% REQUIREMENT 8: LANDMARK AND OBJECT RECOGNITION
+% ==================================================
+
+\mainreq{8.}{Camera-based recognition of a limited set of campus landmarks and objects will be implemented.}
+
+\reqdesc{Use the photos from the dataset to train or fine-tune an established vision model (for example a small YOLO or a MobileNet classifier) for the landmark and object classes, convert it to Core ML, and run it on the phone on frames from the glasses camera. When a landmark is recognized near where the map expects it, the app announces it and uses it to confirm the position. Recognition must run fast enough to be useful while walking.}
+
+\reqleveltwo{8.1.}{A machine-learning model will be developed to recognize selected campus objects and landmarks.}
+
+\subreq{8.1.1.}{The team will organize and label the collected campus images according to the object categories established.}
+
+\subreq{8.1.2.}{An established computer vision model, such as YOLO or MobileNet, will be trained using the labeled campus images.}
+
+\subreq{8.1.3.}{The trained model will be converted to a Core ML-compatible format and integrated into the iPhone application.}
+
+\reqleveltwo{8.2.}{The application will perform landmark recognition during navigation.}
+
+\subreq{8.2.1.}{The application will process supported camera frames from the smart glasses or iPhone to identify mapped landmarks and objects.}
+
+\subreq{8.2.2.}{Recognized landmarks will be compared with nearby mapped landmarks to determine whether the detection is consistent with the user's estimated location.}
+
+\subreq{8.2.3.}{The system will announce relevant recognized landmarks when detection confidence and location consistency meet defined thresholds.}
+
+\subreq{8.2.4.}{The recognition system will be evaluated for detection accuracy and processing speed during walking.}
+
+
+% ==================================================
+% REQUIREMENT 9: OPTIONAL SMARTWATCH SUPPORT
+% ==================================================
+
+\mainreq{9.}{Optional smartwatch support will be added for wrist vibration and quick commands.}
+
+\reqdesc{This requirement is optional. If time allows, an Apple Watch app will receive the same vibration patterns as the phone so the user feels turns on the wrist, and will offer two or three quick commands such as repeat, where am I and stop. The main system must work fully without the watch.}
+
+\reqleveltwo{9.1.}{The Apple Watch application will receive navigation information from the iPhone.}
+
+\subreq{9.1.1.}{The smartwatch application will communicate with the iPhone application using Apple's supported watch connectivity capabilities.}
+
+\subreq{9.1.2.}{The watch will receive navigation events such as turns, warnings, route deviations, and arrival notifications.}
+
+\reqleveltwo{9.2.}{The smartwatch will provide vibration feedback and basic navigation controls.}
+
+\subreq{9.2.1.}{The smartwatch will use supported watchOS haptic feedback patterns to distinguish navigation events where possible.}
+
+\subreq{9.2.2.}{Users will be able to perform basic commands such as repeating instructions, requesting their current location, and stopping navigation.}
+
+\subreq{9.2.3.}{The main navigation application will remain fully functional without an Apple Watch.}
+
+
+% ==================================================
+% REQUIREMENT 10: REPEATABLE NAVIGATION TESTING
+% ==================================================
+
+\mainreq{10.}{Repeatable tests will be built with recorded sensor logs, route replay and recorded video.}
+
+\reqdesc{You cannot walk the campus every time you change the code. Here you record GPS, compass and motion data and glasses video while walking each route once, and build a replay mode that feeds the recording to the app as if it were live. Every later change is tested first by replay, and the results (instructions given, deviations detected, landmarks recognized) are compared with the expected ones.}
+
+\reqleveltwo{10.1.}{The application will record and store navigation test data.}
+
+\subreq{10.1.1.}{The system will record timestamped GPS coordinates, compass headings, accelerometer readings, and gyroscope measurements during test walks.}
+
+\subreq{10.1.2.}{The system will record supported camera footage and associate video frames with timestamps for synchronization with sensor data.}
+
+\subreq{10.1.3.}{Each recording will include a route identifier, recording date, and starting and ending locations.}
+
+\reqleveltwo{10.2.}{The application will provide a route replay and automated testing capability.}
+
+\subreq{10.2.1.}{The replay system will load previously recorded sensor and video data and process it in timestamp order.}
+
+\subreq{10.2.2.}{The system will simulate navigation events, including route progress, turns, deviations, and landmark recognition.}
+
+\subreq{10.2.3.}{The application will compare generated navigation events with expected results and produce a report identifying missed, incorrect, or delayed responses.}
+
+
+% ==================================================
+% REQUIREMENT 11: SUPERVISED WALKING TRIALS
+% ==================================================
+
+\mainreq{11.}{Supervised walking trials will be run on the predefined routes with safety procedures.}
+
+\reqdesc{After replay tests pass, real trials. A sighted team member always walks beside the tester, trials happen in daylight on the approved routes, and the procedure is written down before the first trial. For each trial you record position error, route completion, wrong turns, time to recover from a deviation, landmark recognition accuracy, and whether each instruction came at the right time.}
+
+\reqleveltwo{11.1.}{The team will establish and follow a supervised testing procedure.}
+
+\subreq{11.1.1.}{A written testing procedure will identify the approved walking routes, required equipment, safety precautions, and responsibilities of each team member.}
+
+\subreq{11.1.2.}{Every walking trial will take place during daylight hours and will include a sighted team member accompanying the participant.}
+
+\subreq{11.1.3.}{Participants will receive an explanation of the system's limitations and the procedure for immediately stopping a trial if an unsafe situation occurs.}
+
+\reqleveltwo{11.2.}{The team will evaluate navigation performance during walking trials.}
+
+\subreq{11.2.1.}{The team will record route completion, navigation errors, wrong turns, and the time required to recover from route deviations.}
+
+\subreq{11.2.2.}{The system's estimated positions will be compared with known mapped locations to evaluate positioning accuracy.}
+
+\subreq{11.2.3.}{The team will evaluate whether spoken instructions and vibration alerts occur at appropriate points along the route.}
+
+\subreq{11.2.4.}{Landmark recognition results will be compared with observed campus objects to evaluate recognition accuracy.}
+
+
+% ==================================================
+% REQUIREMENT 12: ACCESSIBILITY, SAFETY AND PRIVACY
+% ==================================================
+
+\mainreq{12.}{Accessibility testing will be performed and the safety, privacy and technical limitations will be documented.}
+
+\reqdesc{Test the app with VoiceOver on, with voice only, and with vibration only, and record what works and what does not. Write down clearly that the system is a supplement to a white cane, a guide dog and mobility training, not a replacement, what happens to camera images and location data, and where the system fails (GPS near buildings, night, rain, crowds).}
+
+\reqleveltwo{12.1.}{The application will be evaluated using supported accessibility features.}
+
+\subreq{12.1.1.}{All application screens and interactive controls will be tested with VoiceOver enabled to verify that labels, navigation order, and actions are accessible.}
+
+\subreq{12.1.2.}{The system will be tested using voice-only interaction to determine whether essential navigation tasks can be completed without looking at the screen.}
+
+\subreq{12.1.3.}{Navigation events will be tested using vibration feedback to evaluate whether the supported patterns are distinguishable.}
+
+\reqleveltwo{12.2.}{The system's safety, privacy, and technical limitations will be documented.}
+
+\subreq{12.2.1.}{The documentation will state that Smart-H is an assistive navigation supplement and does not replace a white cane, guide dog, or orientation and mobility training.}
+
+\subreq{12.2.2.}{The application will request appropriate permissions before accessing location, camera, microphone, or motion information and document how collected data is stored, used, and deleted.}
+
+\subreq{12.2.3.}{The team will identify and document limitations caused by inaccurate GPS measurements, poor lighting, rain, crowded environments, and camera obstruction.}
+
+\subreq{12.2.4.}{The application will notify users when critical navigation information becomes unavailable or unreliable rather than presenting uncertain guidance as accurate.}
+
+
+% ==================================================
+% REQUIREMENT 13: FINAL PROJECT DELIVERABLES
+% ==================================================
+
+\mainreq{13.}{The final product will be delivered as the iPhone app, the campus accessibility dataset, the test results and the documentation.}
+
+\reqdesc{Last step. The app builds and installs from the repository, the dataset and the landmark photos are packaged with their descriptions, the replay recordings and trial results are included, and a user guide explains how to set up the phone, the glasses and, if used, the watch. One person who was not on the team must be able to install and run it from the documentation alone.}
+
+\reqleveltwo{13.1.}{The team will prepare the final software and dataset deliverables.}
+
+\subreq{13.1.1.}{The completed Swift and SwiftUI application source code will be organized in a GitHub repository with instructions for building and installing the application using Xcode.}
+
+\subreq{13.1.2.}{The campus accessibility dataset will include GeoJSON files containing mapped nodes, pedestrian edges, entrances, and landmarks, along with descriptions of their attributes.}
+
+\subreq{13.1.3.}{The final deliverables will include the landmark image dataset, trained recognition model, recorded sensor logs, replay files, and supervised testing results, subject to privacy and sharing restrictions.}
+
+\reqleveltwo{13.2.}{The team will prepare user and technical documentation.}
+
+\subreq{13.2.1.}{A user guide will explain how to install the application, configure permissions, connect supported Meta smart glasses, and begin a navigation session.}
+
+\subreq{13.2.2.}{The technical documentation will describe the application's architecture, major software components, sensor integration, route-planning approach, and machine-learning functionality.}
+
+\subreq{13.2.3.}{A person who did not participate in development will follow the installation instructions to verify that the application can be built and operated independently.}
+
+\subreq{13.2.4.}{The team will document known software limitations, incomplete features, and recommended improvements for future development.}
+
+% CHAPTER
+\chapter{Design}
+% Chapter 3 only: justified body paragraphs without first-line indentation.
+\begingroup
+\setlength{\parindent}{0pt}
+This chapter explains the design of our Smart-Edge Accessible Campus Navigation System for blind and low-vision pedestrians. The system uses an iPhone, Meta smart glasses, and campus map data to help users navigate around Tennessee State University. It is made up of several subsystems that work together to track the user's location, find accessible routes, recognize landmarks, and provide navigation instructions.
+
+Section 3.1 explains the overall system architecture and how the main components connect. Section 3.2 explains each subsystem in more detail, including how information is collected, processed, and used during navigation.
+
+\section{System Architecture}
+Our Smart-Edge Accessible Campus Navigation System is designed to help blind and low-vision pedestrians move around campus using an iPhone and connected devices. The system is divided into several subsystems responsible for campus mapping, location tracking, route planning, landmark recognition, and navigation guidance. Each subsystem handles a different task, but they work together to guide the user to their destination.
+
+The iPhone will serve as the main device responsible for processing information. It will use its built-in sensors, including GPS, compass, accelerometer, and gyroscope, to track the user's location and movement. The application will also use campus map data containing sidewalks, crossings, building entrances, and other important locations. This information will help the system determine where the user is and find a suitable route to their destination.
+
+The Meta smart glasses will provide additional features through their camera, microphone, and speakers. Where supported, the camera will capture images of the user's surroundings, which will be processed on the iPhone to identify selected landmarks. The microphone will allow the user to give supported voice commands, while the speakers can provide spoken directions. If the glasses are disconnected, the application will still support navigation through the iPhone.
+
+Before using the application, our team will collect information about selected campus routes and prepare the data needed for navigation. We will also train and test a computer vision model using a laptop. After preparing the route data and training the model, we will add them to the iPhone application. During navigation, the application will use this information along with live sensor readings to track the user's movement and provide directions.
+
+The system will communicate with the user mainly through spoken instructions and vibration alerts. These instructions will help users identify upcoming turns, crossings, route changes, and when they have reached their destination. An Apple Watch may also be included as an optional device to provide additional vibration feedback and basic navigation controls.
+
+Figure~\ref{fig:system-architecture} overall architecture of the system and how the different devices and subsystems work together. The design separates data preparation, navigation processing, user interaction, and testing so that each part can be developed and tested individually. Most of the navigation processing will take place on the iPhone, while the connected devices will provide additional ways for users to interact with the application.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/system_architecture.png}
+    \caption{Overall system architecture of the Smart-Edge navigation system.}
+    \label{fig:system-architecture}
+\end{figure}
+
+\section{Detailed Design}
+This section explains how the different subsystems of our navigation system will work. It builds on the architecture introduced in Section 3.1 and provides more details about how the system will support accessible navigation around Tennessee State University. The design follows the functional requirements discussed in Chapter 2.
+
+The iPhone will handle the main navigation tasks, including location tracking, route planning, and spoken guidance. Campus mapping and model training will be done before the application is deployed. Meta smart glasses will provide additional camera and audio features where supported, while an optional Apple Watch may be used for vibration alerts and basic controls.
+
+\subsection{Campus Mapping and Data Preparation    }
+The first step in developing our navigation system is collecting and preparing the campus data. Our team will map selected pedestrian routes around Tennessee State University and prepare the images needed to train the landmark recognition model. This work will be done before the navigation application is deployed.
+
+For campus mapping, we will use OpenStreetMap, available TSU campus maps, and information collected by physically walking through the selected routes. We will identify important features such as sidewalks, intersections, crossings, ramps, stairs, building entrances, and landmarks. The routes will be organized into a pedestrian graph made up of nodes and edges. Nodes will represent important locations or points where the user may need to make a decision, while edges will represent the walkable paths connecting them. We will also record location and accessibility information for these features.
+
+The collected route information will be stored using GeoJSON, a file format used to represent geographic data. This will allow us to store coordinates and information about each route in a structured format. We will also collect photographs of selected landmarks, such as building signs, entrances, and crosswalks. These images will be organized and used to train the landmark recognition model.
+
+Our team will train or fine-tune a small computer vision model to recognize the selected landmarks. After training and testing the model, we plan to convert it into a format compatible with Apple's Core ML framework so it can run on the iPhone. The final route data and trained model will then be included in the application. This means the system will not need to train a model each time someone uses it.
+
+\subsection{Positioning and Accessible Route Planning}
+The Positioning and Route Planning subsystems will work together to track the user's location and find an accessible route to their destination.
+
+The Positioning subsystem will collect location and compass information using Apple's Core Location framework. It will also use Core Motion to collect data from the accelerometer and gyroscope. These sensors will help the system estimate the user's location, direction, and movement. Since GPS readings are not always accurate, especially near buildings, we plan to use map matching to compare the estimated location with the mapped pedestrian paths. This will help the application determine which walkway the user is most likely on.
+
+The Route Planning subsystem will use the campus pedestrian graph stored in the application. When the user selects a destination, the system will use their estimated current location and a pathfinding algorithm, such as Dijkstra's algorithm or A*, to calculate a route. The selected algorithm will search the available paths to find a suitable way to reach the destination.
+
+When choosing a route, the system will consider both distance and the accessibility information collected during campus mapping. For example, if a user requires a route without stairs, the system will avoid paths marked as containing stairs. Once a route has been calculated, the application will identify important points along the path, including turns and intersections, and pass this information to the navigation guidance subsystem.
+
+As the user moves, the Positioning subsystem will continue updating their estimated location. If the system detects that the user has moved away from the planned route, it will attempt to calculate another accessible path. However, if the location information is unreliable or another suitable route cannot be found, the application will notify the user instead of giving directions that may not be correct.
+
+\subsection{Accessible User Interface and Navigation Guidance}
+The Accessible User Interface and Navigation Guidance subsystem will control how users interact with the application. Since the system is designed for blind and low-vision pedestrians, our main focus is to make navigation possible without requiring users to constantly look at their phones.
+
+The iPhone application will allow users to select a destination, start or stop navigation, repeat instructions, and request their current location. We will also design the interface to work with Apple's VoiceOver accessibility feature, which reads information on the screen aloud. Supported voice commands will give users another way to perform common actions without using the touchscreen.
+
+During navigation, this subsystem will receive information about the planned route, upcoming turns, and the user's estimated location. It will use this information to decide when to give directions. For example, when a user is approaching an intersection, the application will announce the upcoming turn before they reach it. This should give the user enough time to prepare for the next direction.
+
+The system will use the iPhone's text-to-speech capabilities to provide spoken instructions. Vibration alerts will also be used for events such as turns, route deviations, warnings, and arrival at the destination. Users will be able to repeat instructions or request an update about their estimated location when needed.
+
+We also plan to explore Apple Watch integration as an optional feature. If implemented, the watch could provide vibration alerts and simple controls, such as repeating an instruction or stopping navigation. The iPhone will still handle the main navigation processing, so users will not need an Apple Watch to use the system.
+
+\subsection{Smart Glasses Integration and Landmark Recognition}
+The Smart Glasses Integration and Landmark Recognition subsystems will provide additional ways for users to interact with the system and receive information about their surroundings. We plan to use compatible Meta smart glasses because they include a camera, microphone, and speakers. The iPhone will remain responsible for processing navigation information.
+
+The Glasses Connection subsystem will manage communication between the smart glasses and the iPhone using supported Meta developer tools. Depending on the features available to developers, the glasses may allow the application to receive camera images, accept voice input, and play navigation instructions through their speakers. We will need to confirm which of these features are supported during implementation.
+
+For landmark recognition, camera images will be processed using the trained Core ML model stored in the application. The model will attempt to identify selected landmarks, such as building signs or entrances. When a landmark is detected, the system will check the model's confidence level and compare the result with the user's estimated location.
+
+For example, if the camera identifies a building sign, the application will check whether that building is located near the user. If the identification is reliable and matches the location data, the application can announce the landmark to the user. This extra check is important because the model may sometimes recognize an object incorrectly.
+
+The Glasses Connection subsystem will also monitor whether the smart glasses are connected. If the connection is lost, the user will still be able to continue navigation using the iPhone. Where supported, the iPhone's camera, microphone, and speakers can provide some of the same functions. This will allow the main navigation features to work without depending entirely on the smart glasses.
+
+\par
+\endgroup
+
+% CHAPTER
+\chapter{Implementation}
+You typically write one paragraph here to motivate what this chapter is about.
+
+\section{Robot Hardware Access Library}
+This is an example section.
+
+\section{Graphical User Interface}
+This is an example section.
+
+\subsection{Reading Sensory Data from the Robot}
+This is an example subsection.
+
+\subsection{Sending Actuation Commands to the Robot}
+This is an example subsection.
+
+
+% CHAPTER
+\chapter{Results}
+You typically write one paragraph here to motivate what this chapter is about.
+
+\section{Vision-Based Object Classification}
+This is an example section.
+
+\section{Simulations}
+This is an example section.
+
+\section{Experiments}
+This is an example section.
+
+
+% CHAPTER
+\chapter{Conclusions}
+
+
+ %APPENDICES
+
+\begin{appendices}
+\chapter{Source Codes}
+\section{Graphical User Interface}
+\lstinputlisting[nolol=true,  language=C, basicstyle=\ttfamily\tiny]{./codes/MiddleLayer.cs}
+
+\section{Database Access Code}
+\lstinputlisting[nolol=true,  language=Java, basicstyle=\ttfamily\tiny]{./codes/OracleCon.java}
+
+\section{Deep Learning Code}
+To be completed
+
+\chapter{Mathematical Calculations}
+\section{Data Matrix Formulation}
+We can  define the following data matrix for $N$ feature points collected across $F$ frames:
+\begin{equation}
+W = \left[ \begin{matrix} 
+		 X_{1(1)} & X_{2(1)} & \dotsb & X_{s(1)} & \dotsb & X_{N(1)}\\
+		 Y_{1(1)} & Y_{2(1)} & \dotsb & Y_{s(1)} & \dotsb & Y_{N(1)}\\
+		 \vdots &  \vdots & \vdots & \vdots & \vdots & \vdots \\
+		 X_{1(F)} & X_{2(F)} & \dotsb & X_{s(F)} & \dotsb & X_{N(F)}\\
+		 Y_{1(F)} & Y_{2(F)} & \dotsb & Y_{s(F)} & \dotsb & Y_{N(F)}
+\end{matrix} \right]_{2F\times N}
+\label{eq:motionmatrix}
+\end{equation}
+where $s^{th}$ column of $W$ corresponds to the coordinates of the $s^{th}$ feature point across $F$ frames and $(2i-1)^{th}$ and $(2i)^{th}$ rows correspond to the coordinates of $N$ feature points in $i^{th}$ frame. We get Equation~\eqref{eq:motionmatrix}.
+\section{Subspace Segmentation}
+This is an example section.
+\end{appendices}
+
+
+
+
+\backmatter
+
+%%%%%%%% Bibliography
+\cleardoublepage
+\printbibliography[heading=bibintoc,title={References}]
+\end{document}
+

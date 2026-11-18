@@ -1,0 +1,13 @@
+{
+  "evidence": "User confirms standing at the photographed library entrance for over 30 seconds; original readings preserved.",
+  "arrivalMark": 816577716.977369,
+  "sampleCount": 9,
+  "firstFixDelaySeconds": 4.530590057373047,
+  "lastFixAfterMarkSeconds": 32.12376010417938,
+  "estimatedEntrance": {
+    "latitude": 36.16598269804493,
+    "longitude": -86.82840429001145
+  },
+  "medianReportedAccuracyMeters": 5.098174216877392,
+  "status": "User-confirmed physical destination; GPS coordinate estimate, not independent survey"
+}

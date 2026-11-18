@@ -1,0 +1,1 @@
+[out:json][timeout:45];(way[highway~"^(footway|path|pedestrian|steps)$"](36.160,-86.837,36.173,-86.819);way[building](36.160,-86.837,36.173,-86.819);node[entrance](36.160,-86.837,36.173,-86.819);node[highway=crossing](36.160,-86.837,36.173,-86.819););out body;>;out skel qt;

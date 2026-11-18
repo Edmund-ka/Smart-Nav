@@ -1,0 +1,388 @@
+{
+  "type": "FeatureCollection",
+  "campusGraph": {
+    "schemaVersion": 1,
+    "id": "boyd-library-demo",
+    "name": "Boyd Hall to library \u2014 demonstration trace",
+    "version": "2026-11-16",
+    "isDemonstration": true,
+    "sources": [
+      {
+        "name": "Existing approximate screenshot trace; entrances unverified",
+        "url": "local:boyd_to_library.geojson",
+        "license": "Source imagery attribution retained; trace for project demonstration, redistribution rights not established",
+        "retrieved": "Existing project data, 2026-11-16"
+      }
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "trace-0",
+      "properties": {
+        "id": "trace-0",
+        "name": "Boyd Hall",
+        "isEntrance": true,
+        "placeID": "boyd",
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8275056,
+          36.1654389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-1",
+      "properties": {
+        "id": "trace-1",
+        "name": "trace-1",
+        "isEntrance": false,
+        "placeID": null,
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8277845,
+          36.1653988
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-2",
+      "properties": {
+        "id": "trace-2",
+        "name": "trace-2",
+        "isEntrance": false,
+        "placeID": null,
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8279208,
+          36.165297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-3",
+      "properties": {
+        "id": "trace-3",
+        "name": "trace-3",
+        "isEntrance": false,
+        "placeID": null,
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8284426,
+          36.165159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-4",
+      "properties": {
+        "id": "trace-4",
+        "name": "trace-4",
+        "isEntrance": false,
+        "placeID": null,
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8286284,
+          36.1653023
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-5",
+      "properties": {
+        "id": "trace-5",
+        "name": "trace-5",
+        "isEntrance": false,
+        "placeID": null,
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8287103,
+          36.1657161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-6",
+      "properties": {
+        "id": "trace-6",
+        "name": "trace-6",
+        "isEntrance": false,
+        "placeID": null,
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8286849,
+          36.1658161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-7",
+      "properties": {
+        "id": "trace-7",
+        "name": "TSU Library",
+        "isEntrance": true,
+        "placeID": "library",
+        "verification": "candidate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8283694,
+          36.1658583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-0",
+      "properties": {
+        "id": "trace-edge-0",
+        "from": "trace-0",
+        "to": "trace-1",
+        "lengthMeters": 25.430673353768665,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8275056,
+            36.1654389
+          ],
+          [
+            -86.8277845,
+            36.1653988
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-1",
+      "properties": {
+        "id": "trace-edge-1",
+        "from": "trace-1",
+        "to": "trace-2",
+        "lengthMeters": 16.668657190612034,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8277845,
+            36.1653988
+          ],
+          [
+            -86.8279208,
+            36.165297
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-2",
+      "properties": {
+        "id": "trace-edge-2",
+        "from": "trace-2",
+        "to": "trace-3",
+        "lengthMeters": 49.29122127230905,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8279208,
+            36.165297
+          ],
+          [
+            -86.8284426,
+            36.165159
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-3",
+      "properties": {
+        "id": "trace-edge-3",
+        "from": "trace-3",
+        "to": "trace-4",
+        "lengthMeters": 23.0672064664635,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8284426,
+            36.165159
+          ],
+          [
+            -86.8286284,
+            36.1653023
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-4",
+      "properties": {
+        "id": "trace-edge-4",
+        "from": "trace-4",
+        "to": "trace-5",
+        "lengthMeters": 46.5961385162503,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8286284,
+            36.1653023
+          ],
+          [
+            -86.8287103,
+            36.1657161
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-5",
+      "properties": {
+        "id": "trace-edge-5",
+        "from": "trace-5",
+        "to": "trace-6",
+        "lengthMeters": 11.350864952705761,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8287103,
+            36.1657161
+          ],
+          [
+            -86.8286849,
+            36.1658161
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "trace-edge-6",
+      "properties": {
+        "id": "trace-edge-6",
+        "from": "trace-6",
+        "to": "trace-7",
+        "lengthMeters": 28.70822048875134,
+        "bidirectional": true,
+        "stairs": "unknown",
+        "crossing": "unknown",
+        "accessible": "unknown",
+        "surface": null,
+        "slopePercent": null,
+        "restricted": false,
+        "verification": "candidate",
+        "source": "Existing approximate screenshot trace; entrances unverified"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8286849,
+            36.1658161
+          ],
+          [
+            -86.8283694,
+            36.1658583
+          ]
+        ]
+      }
+    }
+  ]
+}

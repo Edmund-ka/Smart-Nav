@@ -1,0 +1,13 @@
+duration 292.9663749933243; accepted 207; rejected 56; final uncertain; progress 173.96373319092763; decisions ["following": 38, "poorAccuracy": 56, "uncertainRouteMatch": 169]
+User-confirmed turn directions: 2 matched · 1 missing · 0 unexpected · 0 outside timing window
+0 matched · 1 missing · 0 unexpected · 0 outside timing window
+0.0 started progress=0.0
+0.00616908073425293 uncertain progress=0.0
+2.811786413192749 locationRecovered progress=0.0
+34.81254231929779 uncertain progress=4.391962542122937
+124.8117686510086 locationRecovered progress=4.391962542122937
+124.8117686510086 turnRight progress=89.72124740642866
+127.81174373626709 uncertain progress=91.39055181669734
+199.8121852874756 locationRecovered progress=91.39055181669734
+199.8121852874756 turnRight progress=171.3463800722015
+202.81215798854828 uncertain progress=173.96373319092763

@@ -11,7 +11,7 @@
 | N | speaker notes (shown on the same screen) |
 | F | full screen |
 
-The architecture slide (8) builds in 6 steps. Each subsystem slide (11–18) builds itself, then → spotlights components 1…n, then shows a **key idea** visual. Clicking a block on the architecture or a tile on slide 10 jumps to that subsystem. Clicking a component card spotlights it.
+The architecture slide (7) builds in 6 steps. Each subsystem slide (10–17) builds itself, then → spotlights components 1…n, then shows a **key idea** visual. Clicking a block on the architecture or a tile on slide 9 jumps to that subsystem. Clicking a component card spotlights it.
 
 **Edit:** `index.html` (static slides), `app.js` (subsystem data in `SUBS`, architecture layout in `AN`/`AE`, step captions in `ARCH_STEPS`), `styles.css`. Rebuild the portable file:
 
@@ -19,4 +19,4 @@ The architecture slide (8) builds in 6 steps. Each subsystem slide (11–18) bui
 python3 presentation/architecture-deck/build.py
 ```
 
-Sources: Chapter 3 design (architecture and subsystem figures), the Chapter 2 requirement groups, prototype code (`ReplayTurnCue.swift`, `RouteDeviationDetector.swift`), and `presentation/data.js` (the recorded Boyd Hall → library walk).
+Sources: Chapter 3 design (architecture and subsystem figures), the Chapter 2 requirement groups, prototype code (`TurnInstruction.swift`, `OffRouteDetector.swift`), and `presentation/data.js` (the recorded Boyd Hall → library walk).

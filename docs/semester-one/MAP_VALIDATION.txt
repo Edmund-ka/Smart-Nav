@@ -1,0 +1,23 @@
+
+Dataset: Argus/Resources/CampusData/boyd_library_graph.geojson
+8 nodes · 7 edges
+0 errors · 2 warnings
+7 edges require field verification.
+Demonstration dataset; unavailable for live guidance.
+
+Dataset: data/campus/tsu_candidate_graph.geojson
+3158 nodes · 3323 edges
+0 errors · 13 warnings
+Isolated node: osm-node-10759194694
+Isolated node: osm-node-10759194697
+Isolated node: osm-node-10760725393
+Isolated node: osm-node-10760725394
+Isolated node: osm-node-10760731675
+Isolated node: osm-node-10760731677
+Isolated node: osm-node-10765446156
+Isolated node: osm-node-10765461642
+Isolated node: osm-node-11903094472
+Isolated node: osm-node-12018564870
+Isolated node: osm-node-13254437752
+36 disconnected components; no proximity links were added.
+3323 edges require field verification.

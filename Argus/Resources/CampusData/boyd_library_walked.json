@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "id": "boyd-library-walked",
+  "name": "Boyd Hall to TSU Library",
+  "version": "2026-11-17",
+  "isDemonstration": false,
+  "sources": [
+    {
+      "name": "Existing approximate screenshot trace; entrances unverified",
+      "url": "local:boyd_to_library.geojson",
+      "license": "Source imagery attribution retained; trace for project demonstration, redistribution rights not established",
+      "retrieved": "Existing project data, 2026-11-16"
+    },
+    {
+      "name": "User-confirmed walk and entrance photos",
+      "url": "local:ReferenceData/FieldVisits/2026-11-16-boyd-library",
+      "license": "User supplied project evidence",
+      "retrieved": "2026-11-17"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "trace-0",
+      "name": "Boyd Hall",
+      "coordinate": {
+        "latitude": 36.1654389,
+        "longitude": -86.8275056
+      },
+      "isEntrance": true,
+      "placeID": "boyd",
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-1",
+      "name": "trace-1",
+      "coordinate": {
+        "latitude": 36.1653988,
+        "longitude": -86.8277845
+      },
+      "isEntrance": false,
+      "placeID": null,
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-2",
+      "name": "trace-2",
+      "coordinate": {
+        "latitude": 36.165297,
+        "longitude": -86.8279208
+      },
+      "isEntrance": false,
+      "placeID": null,
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-3",
+      "name": "trace-3",
+      "coordinate": {
+        "latitude": 36.165159,
+        "longitude": -86.8284426
+      },
+      "isEntrance": false,
+      "placeID": null,
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-4",
+      "name": "trace-4",
+      "coordinate": {
+        "latitude": 36.1653023,
+        "longitude": -86.8286284
+      },
+      "isEntrance": false,
+      "placeID": null,
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-5",
+      "name": "trace-5",
+      "coordinate": {
+        "latitude": 36.1657161,
+        "longitude": -86.8287103
+      },
+      "isEntrance": false,
+      "placeID": null,
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-6",
+      "name": "trace-6",
+      "coordinate": {
+        "latitude": 36.1658161,
+        "longitude": -86.8286849
+      },
+      "isEntrance": false,
+      "placeID": null,
+      "verification": "candidate"
+    },
+    {
+      "id": "trace-7",
+      "name": "TSU Library",
+      "coordinate": {
+        "latitude": 36.16598269804493,
+        "longitude": -86.82840429001145
+      },
+      "isEntrance": true,
+      "placeID": "library",
+      "verification": "candidate",
+      "spokenDescription": "Library entrance; automatic-door switch on the right, tested by the walker November 16."
+    }
+  ],
+  "edges": [
+    {
+      "id": "trace-edge-0",
+      "from": "trace-0",
+      "to": "trace-1",
+      "geometry": [
+        {
+          "latitude": 36.1654389,
+          "longitude": -86.8275056
+        },
+        {
+          "latitude": 36.1653988,
+          "longitude": -86.8277845
+        }
+      ],
+      "lengthMeters": 25.430673353768665,
+      "bidirectional": true,
+      "stairs": "yes",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified; user confirms descending Boyd entrance stairs, photos IMG_8816\u20138818. Stair extent within this first segment is approximate."
+    },
+    {
+      "id": "trace-edge-1",
+      "from": "trace-1",
+      "to": "trace-2",
+      "geometry": [
+        {
+          "latitude": 36.1653988,
+          "longitude": -86.8277845
+        },
+        {
+          "latitude": 36.165297,
+          "longitude": -86.8279208
+        }
+      ],
+      "lengthMeters": 16.668657190612034,
+      "bidirectional": true,
+      "stairs": "unknown",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified"
+    },
+    {
+      "id": "trace-edge-2",
+      "from": "trace-2",
+      "to": "trace-3",
+      "geometry": [
+        {
+          "latitude": 36.165297,
+          "longitude": -86.8279208
+        },
+        {
+          "latitude": 36.165159,
+          "longitude": -86.8284426
+        }
+      ],
+      "lengthMeters": 49.29122127230905,
+      "bidirectional": true,
+      "stairs": "unknown",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified"
+    },
+    {
+      "id": "trace-edge-3",
+      "from": "trace-3",
+      "to": "trace-4",
+      "geometry": [
+        {
+          "latitude": 36.165159,
+          "longitude": -86.8284426
+        },
+        {
+          "latitude": 36.1653023,
+          "longitude": -86.8286284
+        }
+      ],
+      "lengthMeters": 23.0672064664635,
+      "bidirectional": true,
+      "stairs": "unknown",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified"
+    },
+    {
+      "id": "trace-edge-4",
+      "from": "trace-4",
+      "to": "trace-5",
+      "geometry": [
+        {
+          "latitude": 36.1653023,
+          "longitude": -86.8286284
+        },
+        {
+          "latitude": 36.1657161,
+          "longitude": -86.8287103
+        }
+      ],
+      "lengthMeters": 46.5961385162503,
+      "bidirectional": true,
+      "stairs": "unknown",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified"
+    },
+    {
+      "id": "trace-edge-5",
+      "from": "trace-5",
+      "to": "trace-6",
+      "geometry": [
+        {
+          "latitude": 36.1657161,
+          "longitude": -86.8287103
+        },
+        {
+          "latitude": 36.1658161,
+          "longitude": -86.8286849
+        }
+      ],
+      "lengthMeters": 11.350864952705761,
+      "bidirectional": true,
+      "stairs": "unknown",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified"
+    },
+    {
+      "id": "trace-edge-6",
+      "from": "trace-6",
+      "to": "trace-7",
+      "geometry": [
+        {
+          "latitude": 36.1658161,
+          "longitude": -86.8286849
+        },
+        {
+          "latitude": 36.16598269804493,
+          "longitude": -86.82840429001145
+        }
+      ],
+      "lengthMeters": 31.268352198903724,
+      "bidirectional": true,
+      "stairs": "unknown",
+      "crossing": "unknown",
+      "accessible": "unknown",
+      "surface": null,
+      "slopePercent": null,
+      "restricted": false,
+      "verification": "candidate",
+      "source": "Existing approximate screenshot trace; entrances unverified"
+    }
+  ],
+  "walkReview": {
+    "origin": "trace-0",
+    "destination": "trace-7",
+    "edgeIDs": [
+      "trace-edge-0",
+      "trace-edge-1",
+      "trace-edge-2",
+      "trace-edge-3",
+      "trace-edge-4",
+      "trace-edge-5",
+      "trace-edge-6"
+    ],
+    "observer": "Edmund Afunyah (user report)",
+    "date": "2026-11-17",
+    "evidence": "Repeated walked route confirmed in chat; November 16 recording 9C6FFB3C and photos IMG_8816\u20138820. Two right turns, stairs required, library door actuator tested. Endpoint is median of nine post-arrival fixes, not surveyed. Remaining geometry approximate."
+  }
+}

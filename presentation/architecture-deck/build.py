@@ -40,7 +40,7 @@ def main() -> None:
     js = (HERE / "app.js").read_text()
     data = (PRES / "data.js").read_text()
 
-    html = html.replace('<link rel="stylesheet" href="styles.css">', f"<style>\n{css}\n</style>")
+    html = re.sub(r'<link rel="stylesheet" href="styles\.css(?:\?[^"]*)?">', lambda _: f"<style>\n{css}\n</style>", html)
     html = html.replace('<script src="../data.js"></script>', f"<script>\n{data}\n</script>")
     html = html.replace('<script src="app.js"></script>', f"<script>\n{js}\n</script>")
     html = re.sub(r'src="\.\./assets/(app-[a-z]+\.png)"',
